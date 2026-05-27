@@ -4,7 +4,7 @@ window.SITE_CONFIG = {
   "examName": "マンション管理士試験",
   "siteOrigin": "https://mankan-master.jp",
   "contactUrl": "https://forms.gle/XazAUQxqgngAdnwb7",
-  "ga4MeasurementId": "",
+  "ga4MeasurementId": "G-Q47X42S88D",
   "theme": {
     "accent": "#333333",
     "accentText": "#ffffff",
