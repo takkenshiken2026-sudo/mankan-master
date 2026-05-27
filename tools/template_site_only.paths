@@ -29,6 +29,7 @@ tools/past_question_seo.py
 # --- マン管マスター（mankan-master）---
 tools/import_mankan_xlsx.py
 tools/import_mankan_practice_xlsx.py
+tools/import_mankan_ichimon_xlsx.py
 
 # --- 賃管マスター（chintaikanrishi-master）---
 # SPA 学習データ（eisei1 系）

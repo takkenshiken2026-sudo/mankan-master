@@ -199,7 +199,7 @@ body{font-family:var(--font);font-size:var(--fs-body);background:#f0f0f1;color:v
 #auth-screen{min-height:100vh;display:none;align-items:center;justify-content:center;background:var(--bg)}
 .auth-wrap{width:100%;max-width:380px;padding:0 20px}
 .auth-logo{text-align:center;margin-bottom:32px}
-.auth-logo-mark{display:inline-flex;align-items:center;justify-content:center;width:auto;min-width:52px;padding:0 14px;height:52px;border-radius:12px;background:var(--ink);font-size:16px;font-weight:700;color:var(--bg2);margin-bottom:14px;font-family:var(--font);letter-spacing:-0.02em}
+.auth-logo-mark{display:inline-flex;align-items:center;justify-content:center;width:auto;min-width:52px;padding:0 14px;height:52px;border-radius:12px;background:var(--ink);font-size:16px;font-weight:700;color:var(--bg2);margin-bottom:14px;font-family:var(--font);letter-spacing:-0.02em;line-height:1;white-space:nowrap}
 .auth-logo h1{font-size:24px;font-weight:700;letter-spacing:-0.02em;font-family:var(--font)}
 .auth-logo p{font-size:14px;color:var(--text2);margin-top:5px;letter-spacing:.02em}
 .auth-logo-fullname{font-size:13px!important;color:var(--text2)!important;margin-top:4px!important;font-weight:600!important;letter-spacing:.02em!important}
@@ -224,7 +224,7 @@ body{font-family:var(--font);font-size:var(--fs-body);background:#f0f0f1;color:v
 .topnav{position:sticky;top:0;z-index:30;background:#ffffff;border-bottom:1px solid var(--border)}
 .topnav-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:54px;display:flex;align-items:center;gap:0}
 .topnav-logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--text);cursor:pointer;margin-right:28px;flex-shrink:0;pointer-events:auto}
-.topnav-logo-mark{width:28px;height:28px;border-radius:7px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--bg2);flex-shrink:0;font-family:var(--font)}
+.topnav-logo-mark{width:auto;min-width:44px;padding:0 10px;height:28px;border-radius:7px;background:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--bg2);flex-shrink:0;font-family:var(--font);letter-spacing:-0.02em;line-height:1;white-space:nowrap}
 .topnav-logo-text{font-size:16px;font-weight:700;letter-spacing:-0.01em;white-space:nowrap}
 .topnav-logo-stack{display:flex;flex-direction:column;align-items:flex-start;gap:1px;line-height:1.15;min-width:0}
 .topnav-logo-sub{font-size:10px;font-weight:600;color:var(--text3);letter-spacing:0;line-height:1.25;white-space:normal;max-width:min(220px,52vw)}
@@ -782,7 +782,7 @@ details.rich-detail summary{display:none}
   .topnav-hamburger{display:flex}
   .topnav-inner{padding:0 10px;height:52px}
   .topnav-logo{margin-right:8px}
-  .topnav-logo-mark{width:26px;height:26px;font-size:11px}
+  .topnav-logo-mark{width:auto;min-width:40px;padding:0 8px;height:26px;font-size:10px}
   .topnav-logo-text{font-size:15px}
   .topnav-logo-sub{font-size:9px;max-width:min(200px,58vw)}
   .focus-btn{margin-left:auto;margin-right:6px;width:34px;height:34px}
@@ -1783,7 +1783,7 @@ body.is-solving .site-footer{display:none!important}
             <a href="articles/index.html">試験ガイド</a>
             <a href="related-sites.html">関連リンク</a>
             <a href="privacy.html">プライバシー</a>
-            <a href="https://example.com/contact" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
+            <a href="https://forms.gle/XazAUQxqgngAdnwb7" target="_blank" rel="noopener noreferrer">お問い合わせ</a>
           </nav>
           <span class="site-footer-sep" aria-hidden="true"></span>
           <span class="site-footer-copy">© 2026 マン管マスター学習支援・mankan-master.jp</span>

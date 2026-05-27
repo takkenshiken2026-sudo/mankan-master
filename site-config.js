@@ -3,7 +3,7 @@ window.SITE_CONFIG = {
   "brandMark": "マン管",
   "examName": "マンション管理士試験",
   "siteOrigin": "https://mankan-master.jp",
-  "contactUrl": "https://example.com/contact",
+  "contactUrl": "https://forms.gle/XazAUQxqgngAdnwb7",
   "ga4MeasurementId": "",
   "theme": {
     "accent": "#333333",
@@ -94,7 +94,7 @@ window.SITE_CONFIG = {
       },
       {
         "label": "お問い合わせ",
-        "href": "https://example.com/contact",
+        "href": "https://forms.gle/XazAUQxqgngAdnwb7",
         "key": "contact"
       }
     ]

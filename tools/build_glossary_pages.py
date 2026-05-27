@@ -1347,13 +1347,34 @@ def main() -> int:
     by_cat: dict[str, list[dict]] = {}
     for e in entries:
         by_cat.setdefault(e["category"] or "その他", []).append(e)
-    hub_count = 0
-    for cat in ordered_term_categories(by_cat):
+
+    # 全 fields のハブを必ず生成（用語0件でも q/ からリンクされる）
+    by_hub: dict[str, list[dict]] = {}
+    hub_labels: dict[str, str] = {}
+    for fid, label in FIELD_LABELS.items():
+        hub = f"field-{css_safe_field_id(fid)}"
+        hub_labels[hub] = label
+        by_hub[hub] = []
+    for cat, cat_entries in by_cat.items():
         hub = field_hub_slug(cat)
+        by_hub.setdefault(hub, []).extend(cat_entries)
+        if hub not in hub_labels:
+            hub_labels[hub] = cat
+
+    hub_count = 0
+    for hub in sorted(hub_labels.keys()):
+        label = hub_labels[hub]
+        seen_slugs: set[str] = set()
+        unique: list[dict] = []
+        for e in by_hub.get(hub, []):
+            if e["slug_file"] in seen_slugs:
+                continue
+            seen_slugs.add(e["slug_file"])
+            unique.append(e)
         hub_dir = TERMS_DIR / hub
         hub_dir.mkdir(parents=True, exist_ok=True)
         (hub_dir / "index.html").write_text(
-            build_field_hub_html(cat, hub, by_cat[cat], base),
+            build_field_hub_html(label, hub, unique, base),
             encoding="utf-8",
         )
         hub_count += 1

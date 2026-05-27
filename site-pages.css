@@ -5327,33 +5327,39 @@ html:not(.js) .terms-idx-seo-fallback .terms-idx-seo-list a {
  *   マン管マスターは3文字のため横長に。テンプレ同期で site-pages.css が
  *   上書きされた場合はこのブロックを再追加すること）
  * ============================================================================ */
-.topnav-logo-mark {
+.topnav-logo-mark,
+.site-shell-header .topnav-logo-mark,
+.site-page-mark {
   width: auto;
-  min-width: 28px;
-  padding: 0 8px;
+  min-width: 44px;
+  padding: 0 10px;
   font-size: 11px;
   letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
 }
 .site-footer-logo-mark {
   width: auto;
-  min-width: 22px;
-  padding: 0 7px;
+  min-width: 36px;
+  padding: 0 8px;
   font-size: 9px;
   letter-spacing: -0.02em;
-}
-.site-page-mark {
-  width: auto;
-  min-width: 28px;
-  padding: 0 8px;
-  font-size: 11px;
-  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
 }
 @media (max-width: 720px) {
-  .site-shell-header .topnav-logo-mark {
+  .topnav-logo-mark,
+  .site-shell-header .topnav-logo-mark,
+  .site-page-mark {
     width: auto;
-    min-width: 26px;
-    padding: 0 7px;
+    min-width: 40px;
+    padding: 0 8px;
     font-size: 10px;
+  }
+  .site-footer-logo-mark {
+    min-width: 32px;
+    padding: 0 7px;
+    font-size: 8px;
   }
 }
 
