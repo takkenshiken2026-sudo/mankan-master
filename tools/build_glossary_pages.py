@@ -50,6 +50,9 @@ HEAD_FONTS = """<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">"""
 
+PRESERVED_TERM_SUBDIRS = frozenset({"compare", "numbers", "mistakes", "priority", "samples", "diagram-samples"})
+PRESERVED_TERM_HTML = frozenset({"index.html", "g-writing-sample.html", "g-diagram-sample.html"})
+
 GLOSSARY_CSV = ROOT / "data" / "glossary_terms.csv"
 TERMS_DIR = ROOT / "terms"
 BASE_DEFAULT = clean_origin()
@@ -445,7 +448,13 @@ GUIDE_LINK_FALLBACK_SLUGS = (
 )
 
 
-def guide_related_link_items(category: str, guides: list[dict[str, str]], *, limit: int = 3) -> list[str]:
+def guide_related_link_items(
+    category: str,
+    guides: list[dict[str, str]],
+    *,
+    limit: int = 3,
+    articles_prefix: str = "../articles/",
+) -> list[str]:
     if not guides:
         return []
     by_slug = {g["slug"]: g for g in guides}
@@ -459,7 +468,7 @@ def guide_related_link_items(category: str, guides: list[dict[str, str]], *, lim
             if slug not in seen:
                 seen.add(slug)
                 picked.append(
-                    f'<a class="related-link" href="../articles/{html.escape(slug)}/">'
+                    f'<a class="related-link" href="{articles_prefix}{html.escape(slug)}/">'
                     f"{html.escape(g['title'])}</a>"
                 )
         if len(picked) >= limit:
@@ -472,7 +481,7 @@ def guide_related_link_items(category: str, guides: list[dict[str, str]], *, lim
             continue
         seen.add(slug)
         picked.append(
-            f'<a class="related-link" href="../articles/{html.escape(slug)}/">'
+            f'<a class="related-link" href="{articles_prefix}{html.escape(slug)}/">'
             f"{html.escape(g['title'])}</a>"
         )
     return picked
@@ -584,6 +593,17 @@ def custom_faq_items(entry: dict, fallback: list[dict[str, str]]) -> list[dict[s
         if q and a:
             items.append({"question": q, "answer": a})
     return items or fallback
+
+def multi_paragraph_html(value: str, css_class: str = "article-lead") -> str:
+    """改行2つ区切りで複数段落の HTML を返す。"""
+    text = norm(value)
+    if not text:
+        return ""
+    paras = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
+    if len(paras) <= 1:
+        return f'<p class="{css_class}">{html.escape(text)}</p>'
+    return "".join(f'<p class="{css_class}">{html.escape(p)}</p>' for p in paras)
+
 
 
 def semicolon_list_html(value: str) -> str:
@@ -1340,10 +1360,10 @@ def main() -> int:
 
     TERMS_DIR.mkdir(parents=True, exist_ok=True)
     for stale in TERMS_DIR.glob("*.html"):
-        if stale.name != "index.html":
+        if stale.name not in PRESERVED_TERM_HTML:
             stale.unlink()
     for stale in TERMS_DIR.iterdir():
-        if stale.is_dir():
+        if stale.is_dir() and stale.name not in PRESERVED_TERM_SUBDIRS:
             shutil.rmtree(stale)
 
     for e in entries:
