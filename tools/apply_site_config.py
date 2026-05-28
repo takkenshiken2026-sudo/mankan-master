@@ -77,24 +77,49 @@ def replace_all(text: str) -> str:
         )
     if exam_name() != "◯◯試験（プレースホルダー）":
         replacements.append(("◯◯試験", exam_name()))
+    mid = ga4_measurement_id()
+    if mid:
+        replacements.append(("（測定ID <code></code>）", f"（測定ID <code>{mid}</code>）"))
     for src, dst in replacements:
         text = text.replace(src, dst)
+    return text
 
-    marker = '<script src="./site-config.js"></script>'
-    if "site-config.js" not in text and "site-analytics.js" in text:
-        for old, new_block in (
-            (
-                '<script defer src="./site-analytics.js"></script>',
-                marker + '\n<script defer src="./site-analytics.js"></script>',
-            ),
-            (
-                '<script defer src="site-analytics.js"></script>',
-                '<script src="site-config.js"></script>\n<script defer src="site-analytics.js"></script>',
-            ),
-        ):
-            if old in text:
-                text = text.replace(old, new_block, 1)
-                break
+
+def ensure_site_config_in_head(text: str, rel_path: Path) -> str:
+    """site-config.js は head に1回だけ（body 内 GA タグの直前に挿入しない）。"""
+    if "site-config.js" in text:
+        return text
+    if rel_path == ROOT / "index.html":
+        href = "site-config.js"
+    elif rel_path.parent == Path("."):
+        href = "./site-config.js"
+    else:
+        depth = len(rel_path.parts) - 1
+        href = ("../" * depth) + "site-config.js"
+    script = f'<script src="{href}"></script>'
+    if "</head>" in text:
+        return text.replace("</head>", f"  {script}\n</head>", 1)
+    return text
+
+
+def dedupe_ga4_scripts(text: str) -> str:
+    """重複した site-analytics.js / GA4 ブロックを除去。"""
+    text = re.sub(
+        r'(<script defer src="[^"]*site-analytics\.js"></script>)\s*'
+        r'(?:<script src="[^"]*site-config\.js"></script>\s*)?'
+        r'(<script defer src="[^"]*site-analytics\.js"></script>)',
+        r"\1",
+        text,
+    )
+    ga4_tail = (
+        r'(?:<!-- GA4: tools/html_footer\.analytics_snippet.*?-->\s*)?'
+        r'<script>window\.__GA4_MEASUREMENT_ID__="[^"]*";</script>\s*'
+        r'<script defer src="[^"]*site-analytics\.js"></script>\s*'
+    )
+    blocks = list(re.finditer(ga4_tail, text, flags=re.S))
+    if len(blocks) > 1:
+        for m in reversed(blocks[1:]):
+            text = text[: m.start()] + text[m.end() :]
     return text
 
 
@@ -133,20 +158,20 @@ def replace_static_chrome(text: str, path: Path) -> str:
         flags=re.S,
     )
     text = re.sub(
-        r'\s*<footer class="(?:site-page-footer(?: site-page-footer--wide)?|site-footer)[^"]*".*?</footer>\s*(?:<!-- GA4:.*?-->\s*)?(?:<script>window\.__GA4_MEASUREMENT_ID__="[^"]*";</script>\s*)?(?:<script defer src="[^"]*site-analytics\.js"></script>\s*)?',
+        r'\s*<footer class="(?:site-page-footer(?: site-page-footer--wide)?|site-footer)[^"]*".*?</footer>\s*'
+        r'(?:<!-- GA4:.*?-->\s*)?'
+        r'(?:<script>window\.__GA4_MEASUREMENT_ID__="[^"]*";</script>\s*)?'
+        r'(?:<script defer src="[^"]*site-analytics\.js"></script>\s*)?'
+        r'(?:<script src="[^"]*site-config\.js"></script>\s*)?'
+        r'(?:<script defer src="[^"]*site-analytics\.js"></script>\s*)?',
         "\n" + site_page_footer(rel_path, current=current),
         text,
         count=1,
         flags=re.S,
     )
     text = text.replace("</script></div>", "</script>\n  </div>")
-    text = re.sub(
-        r'(</div>)\s*<!-- GA4:.*?site-analytics\.js"></script>\s*(?=</body>)',
-        r"\1\n",
-        text,
-        count=1,
-        flags=re.S,
-    )
+    text = dedupe_ga4_scripts(text)
+    text = ensure_site_config_in_head(text, rel_path)
     return ensure_theme_link(text, rel_path)
 
 
@@ -261,12 +286,16 @@ def main() -> int:
         if not path.is_file():
             continue
         old = path.read_text(encoding="utf-8")
-        new = replace_static_chrome(replace_all(old), path)
+        new = replace_all(old)
         if path == ROOT / "index.html":
             new = ensure_index_theme(new)
             new = update_index_shell_footer(new)
             new = update_index_brand_mark(new)
             new = update_index_glossary_excerpt(new)
+            new = dedupe_ga4_scripts(new)
+            new = ensure_site_config_in_head(new, path)
+        else:
+            new = replace_static_chrome(new, path)
         if new != old:
             path.write_text(new, encoding="utf-8")
             print(f"Updated {path.relative_to(ROOT)}")

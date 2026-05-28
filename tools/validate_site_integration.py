@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from tools.site_config import load_config  # noqa: E402
+from tools.site_config import ga4_measurement_id, load_config  # noqa: E402
 
 
 @dataclass
@@ -511,6 +511,76 @@ def _viewport_and_static_css(root: Path) -> list[Issue]:
     return issues
 
 
+GA4_MID_RE = re.compile(r"^G-[A-Za-z0-9]+$")
+GA4_SNIPPET_RE = re.compile(
+    r'window\.__GA4_MEASUREMENT_ID__="([^"]+)";\s*'
+    r'<script defer src="[^"]*site-analytics\.js"></script>',
+    re.S,
+)
+
+# 即時リダイレクトのみで GA を載せないページ（noindex）
+_GA4_HTML_SKIP = frozenset({"terms/priority/index.html"})
+
+
+def _ga4_coverage(root: Path) -> list[Issue]:
+    """全公開 HTML に GA4（site-config.json → analytics_snippet）が載っているか。"""
+    issues: list[Issue] = []
+    mid = ga4_measurement_id()
+    if not mid or not GA4_MID_RE.match(mid):
+        issues.append(
+            Issue(
+                "site-config.json: ga4MeasurementId が空または G- で始まる測定IDではありません"
+            )
+        )
+        return issues
+
+    analytics_js = root / "site-analytics.js"
+    if analytics_js.is_file():
+        js = analytics_js.read_text(encoding="utf-8")
+        if f'DEFAULT_MID = "{mid}"' not in js and f"DEFAULT_MID = '{mid}'" not in js:
+            issues.append(
+                Issue(
+                    f"site-analytics.js: DEFAULT_MID が ga4MeasurementId ({mid!r}) と一致しません"
+                )
+            )
+
+    for rel in ("index.html", "about.html", "privacy.html", "related-sites.html"):
+        path = root / rel
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if text.count("site-analytics.js") != 1:
+            issues.append(
+                Issue(f"{rel}: site-analytics.js の読み込みが1回ではありません（{text.count('site-analytics.js')} 回）")
+            )
+        if f'window.__GA4_MEASUREMENT_ID__="{mid}"' not in text:
+            issues.append(Issue(f"{rel}: window.__GA4_MEASUREMENT_ID__ が {mid!r} ではありません"))
+
+    index = root / "index.html"
+    if index.is_file() and "ga4PageView" not in index.read_text(encoding="utf-8"):
+        issues.append(Issue("index.html: SPA 画面遷移用 ga4PageView 呼び出しがありません"))
+
+    privacy = root / "privacy.html"
+    if privacy.is_file() and f"<code>{mid}</code>" not in privacy.read_text(encoding="utf-8"):
+        issues.append(Issue("privacy.html: GA4 測定IDの記載がありません（プライバシーポリシー §2）"))
+
+    missing: list[str] = []
+    for html in root.rglob("*.html"):
+        if "public_site" in html.parts:
+            continue
+        rel = html.relative_to(root).as_posix()
+        if rel in _GA4_HTML_SKIP:
+            continue
+        if "site-analytics.js" not in html.read_text(encoding="utf-8"):
+            missing.append(rel)
+    if missing:
+        show = ", ".join(missing[:8])
+        extra = f" 他 {len(missing) - 8} 件" if len(missing) > 8 else ""
+        issues.append(Issue(f"GA4 未設置の HTML: {show}{extra}"))
+
+    return issues
+
+
 def _static_chrome(root: Path) -> list[Issue]:
     """docs/site-chrome.md — ヘッダー topnav 統一・旧 q-static-header 禁止。"""
     issues: list[Issue] = []
@@ -583,6 +653,7 @@ def main() -> int:
     issues.extend(_header_learning_nav(root))
     issues.extend(_responsive_css_source(root))
     issues.extend(_viewport_and_static_css(root))
+    issues.extend(_ga4_coverage(root))
 
     if not issues:
         print("validate_site_integration: OK")
