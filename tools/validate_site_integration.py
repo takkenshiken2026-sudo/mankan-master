@@ -111,19 +111,29 @@ def _terms_index(terms_index: Path) -> list[Issue]:
     if not terms_index.is_file():
         return []
     text = terms_index.read_text(encoding="utf-8")
+    issues: list[Issue] = []
+    if "q-hub-links" not in text:
+        issues.append(
+            Issue("terms/index.html: 知識ハブ4タブ（q-hub-links）がありません")
+        )
     m = re.search(
         r'<script[^>]+id="terms-index-data"[^>]*>(.*?)</script>',
         text,
         flags=re.S | re.I,
     )
     if not m:
-        return [Issue("terms/index.html: #terms-index-data がありません（build_glossary_pages を実行）")]
+        issues.append(
+            Issue("terms/index.html: #terms-index-data がありません（build_glossary_pages を実行）")
+        )
+        return issues
     try:
         data = json.loads(m.group(1).strip())
     except json.JSONDecodeError as e:
-        return [Issue(f"terms/index.html: terms-index-data の JSON が不正: {e}")]
+        issues.append(Issue(f"terms/index.html: terms-index-data の JSON が不正: {e}"))
+        return issues
     if not isinstance(data, list):
-        return [Issue("terms/index.html: terms-index-data は配列である必要があります")]
+        issues.append(Issue("terms/index.html: terms-index-data は配列である必要があります"))
+        return issues
     missing: list[str] = []
     for item in data:
         if not isinstance(item, dict):
@@ -136,12 +146,12 @@ def _terms_index(terms_index: Path) -> list[Issue]:
     if missing:
         preview = ", ".join(missing[:5])
         more = f" 他{len(missing) - 5}件" if len(missing) > 5 else ""
-        return [
+        issues.append(
             Issue(
                 f"terms/index.html: shortDef/definition が空の用語があります（{preview}{more}）"
             )
-        ]
-    return []
+        )
+    return issues
 
 
 def _terms_js(js_path: Path) -> Issue | None:

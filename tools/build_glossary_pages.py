@@ -34,6 +34,7 @@ from tools.html_footer import (
     site_page_wrap_close,
     site_page_wrap_open,
 )
+from tools.knowledge_hub_tabs import knowledge_hub_tab_hrefs, knowledge_hub_tabs_html
 from tools.site_config import (
     brand_name,
     category_order,
@@ -216,7 +217,7 @@ def split_semicolon(s: str) -> list[str]:
 
 TERMS_INDEX_CSS_VER = "20260524-terms-table-14px"
 TERMS_INDEX_JS_VER = "20260521-terms-snippet"
-TERMS_INDEX_SEARCH_PLACEHOLDER = "例：ストレスチェック、ラインケア、うつ病…"
+TERMS_INDEX_SEARCH_PLACEHOLDER = "例：専有部分、共用部分、区分所有権…"
 
 # CSV enrich 時の分野テンプレ（一覧の定義抜粋には出さない）
 _GENERIC_SNIPPET_SUFFIXES = (
@@ -1165,6 +1166,7 @@ def build_terms_index(entries: list[dict], base_url: str) -> str:
         f"{exam_name()}の試験で押さえたい重要用語を、分野別にまとめています。"
         "検索と分野の絞り込みで目的の用語を探し、各解説記事で意味や試験での使い方を確認できます。"
     )
+    tabs_html = knowledge_hub_tabs_html(current="terms", **knowledge_hub_tab_hrefs(here="terms"))
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -1194,6 +1196,7 @@ def build_terms_index(entries: list[dict], base_url: str) -> str:
   {page_breadcrumb}
   <h1>用語解説</h1>
   <p class="site-page-lead">{html.escape(lead)}</p>
+  {tabs_html}
   <section class="terms-index-panel" aria-labelledby="terms-index-heading">
     <div class="terms-index-head">
       <div>
