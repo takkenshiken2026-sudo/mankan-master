@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
@@ -330,3 +331,23 @@ def write_batch(
     n = write_rows("numbers", numbers, reset=reset)
     m = write_rows("mistakes", mistakes, reset=reset)
     return c, n, m
+
+
+HEADER_COMPARE = [
+    "slug", "title", "category", "tags", "summary", "col_labels", "compare_rows",
+    "article_title", "article_lead", "exam_points", "common_mistakes", "memory_tip",
+    "related_terms", "faq_1_question", "faq_1_answer", "faq_2_question", "faq_2_answer",
+    "faq_3_question", "faq_3_answer", "faq_4_question", "faq_4_answer",
+]
+HEADER_NUMBERS = [
+    "slug", "title", "category", "tags", "summary", "highlight", "item_rows",
+    "article_title", "article_lead", "exam_points", "common_mistakes", "memory_tip",
+    "related_terms", "faq_1_question", "faq_1_answer", "faq_2_question", "faq_2_answer",
+    "faq_3_question", "faq_3_answer", "faq_4_question", "faq_4_answer",
+]
+HEADER_MISTAKES = [
+    "slug", "title", "category", "tags", "summary", "confusion_point", "pattern_rows",
+    "article_title", "article_lead", "exam_points", "common_mistakes", "memory_tip",
+    "related_terms", "faq_1_question", "faq_1_answer", "faq_2_question", "faq_2_answer",
+    "faq_3_question", "faq_3_answer", "faq_4_question", "faq_4_answer",
+]
