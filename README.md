@@ -47,9 +47,9 @@ UI 共通部の更新はテンプレ（`exam-site-shell`）側で行い、ここ
 
 ```bash
 # exam-site-shell 側で実行
-python3 tools/check_template_drift.py --target /Users/otedaiki/mankan-master
-python3 tools/sync_from_template.py --target /Users/otedaiki/mankan-master --dry-run
-python3 tools/sync_from_template.py --target /Users/otedaiki/mankan-master --build
+python3 tools/check_template_drift.py --target /Users/otedaiki/Projects/mankan-master
+python3 tools/sync_from_template.py --target /Users/otedaiki/Projects/mankan-master --dry-run
+python3 tools/sync_from_template.py --target /Users/otedaiki/Projects/mankan-master --build
 ```
 
 `site-config.json` / `data/*.csv` / `index.html` などサイト固有のファイルは上書きされません（`tools/template_site_only.paths`）。
