@@ -1310,6 +1310,10 @@ def _dedupe_mistake_patterns(rows: list[dict[str, str]]) -> None:
 
 BATCH_EARLY_LABEL: dict[int, str] = {
     30: "基礎",
+    31: "整理",
+    32: "構造・取扱い",
+    33: "取扱い深掘り",
+    34: "試験頻出",
 }
 
 
