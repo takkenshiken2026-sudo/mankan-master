@@ -165,7 +165,7 @@ def page_meta_description(page: dict) -> str:
     )
 
 
-Q_INDEX_CSS_VER = "20260531-logo-mark-flex"
+Q_INDEX_CSS_VER = "20260526-q-index-mobile"
 
 GLOSSARY_CSV = ROOT / "data" / "glossary_terms.csv"
 
