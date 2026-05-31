@@ -3794,7 +3794,9 @@ html:not(.js) .terms-idx-seo-fallback .terms-idx-seo-list a {
 .seo-toc a {
   color: var(--ink);
   font-weight: 600;
+  font-size: var(--fs-sub);
   text-decoration: underline;
+  text-decoration-color: #141414;
   text-underline-offset: 3px;
 }
 .seo-toc a:hover {
