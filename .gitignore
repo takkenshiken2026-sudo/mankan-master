@@ -2,6 +2,3 @@
 public_site/
 .local-notes/
 visual-smoke/
-
-# 一時除外: PAT に workflow スコープがないため別途 push する
-.github/workflows/
