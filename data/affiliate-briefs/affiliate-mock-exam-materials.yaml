@@ -1,0 +1,70 @@
+slug: affiliate-mock-exam-materials
+theme_key: mock-exam-materials
+search_intent: マンション管理士の一問一答・速習教材を比較して選びたい
+title: マンション管理士の一問一答・速習3選【セレクト1000・管理業務主任者2026】
+layout: product-comparison
+asp_primary: amazon
+comparison_kind: books
+comparison_title: 一問一答・速習3選（比較）
+price_disclaimer: 価格は執筆時点（2026-06-04）のAmazon税込参考です。受験区分は公益財団法人マンション管理センター（公式）で必ず確認してください。
+products:
+- rank: 1
+  offer_type: book
+  name: 2026年度版 らくらくわかる! マンション管理士速習テキスト
+  publisher: TAC出版
+  edition: 2026年度版
+  price_yen: 3190
+  price_note: Amazon税込参考・送料別
+  pages: 900
+  format: B5判
+  asin: '4300120323'
+  image_file: mankan-book-4300120323.webp
+  amazon_url: https://www.amazon.co.jp/dp/4300120323/ref=nosim?tag=ue083093-22
+  for_who: テキスト読了前後に速習で論点を整理したい人
+  highlights:
+  - 速習形式で3分野を短期復習
+  - TAC過去8年・一問一答への橋渡しに向く
+  - 社会人のスキマ時間学習と相性がよい
+- rank: 2
+  offer_type: book
+  name: 2026年度版 マンション管理士 一問一答セレクト1000
+  publisher: TAC出版
+  edition: 2026年度版
+  price_yen: 2200
+  price_note: Amazon税込参考・送料別
+  pages: 560
+  format: B5判
+  asin: 430012034X
+  image_file: mankan-book-430012034x.webp
+  amazon_url: https://www.amazon.co.jp/dp/430012034X/ref=nosim?tag=ue083093-22
+  for_who: マン管単独受験で短問演習量を確保したい人
+  highlights:
+  - セレクト1000問で演習効率を上げやすい
+  - 項目別過去8年問題集との併用向き
+  - 直前期の穴埋め演習にも使える
+- rank: 3
+  offer_type: book
+  name: 2026年度版 管理業務主任者 一問一答セレクト1000
+  publisher: TAC出版
+  edition: 2026年度版
+  price_yen: 2200
+  price_note: Amazon税込参考・送料別
+  pages: 516
+  format: B5判
+  asin: '4300120293'
+  image_file: mankan-book-4300120293.webp
+  amazon_url: https://www.amazon.co.jp/dp/4300120293/ref=nosim?tag=ue083093-22
+  for_who: 管理業務主任者区分の短問演習を追加したいW受験者
+  highlights:
+  - 管理業務主任者向けセレクト1000問
+  - マン管一問一答とセットでW受験対策
+  - Wマスターシリーズとの章立て相性がよい
+related_links:
+- exam-overview:試験概要
+- past-questions-by-field:分野別過去問
+- pass-score:合格点と合格基準
+- affiliate-textbooks-recommend:おすすめテキスト
+- affiliate-problem-books:おすすめ問題集
+- study-plan-beginner:初学者向け学習計画
+operator_note: Amazon tag=ue083093-22。4300120323 / 430012034X / 4300120293。管理業務主任者過去8年
+  4300120285 はFAQ言及。2026-06-04 価格確認。

@@ -1,0 +1,69 @@
+slug: affiliate-problem-books
+theme_key: problem-books
+search_intent: マンション管理士の過去問・問題集を比較して選びたい
+title: マンション管理士のおすすめ問題集3選【過去8年・分野別2026】
+layout: product-comparison
+asp_primary: amazon
+comparison_kind: books
+comparison_title: おすすめ問題集3選（比較）
+price_disclaimer: 価格・在庫は執筆時点（2026-06-04）のAmazon税込参考です。購入前に販売ページで最新版を確認してください。
+products:
+- rank: 1
+  offer_type: book
+  name: 2026年度版 マンション管理士 項目別過去8年問題集
+  publisher: TAC出版
+  edition: 2026年度版
+  price_yen: 2860
+  price_note: Amazon税込参考・送料別
+  pages: 872
+  format: B5判
+  asin: '4300120331'
+  image_file: mankan-book-4300120331.webp
+  amazon_url: https://www.amazon.co.jp/dp/4300120331/ref=nosim?tag=ue083093-22
+  for_who: TACテキストとセットで過去8年分を解きたい人
+  highlights:
+  - 項目別で弱点分野の演習に向く
+  - TAC一問一答・速習テキストと組み合わせやすい
+  - 本試験形式の演習量確保に有効
+- rank: 2
+  offer_type: book
+  name: 2026年版 出る順 マンション管理士 分野別過去問題集
+  publisher: LEC
+  edition: 2026年版
+  price_yen: 2750
+  price_note: Amazon税込参考・送料別
+  pages: 874
+  format: B5判
+  asin: '4844974300'
+  image_file: mankan-book-4844974300.webp
+  amazon_url: https://www.amazon.co.jp/dp/4844974300/ref=nosim?tag=ue083093-22
+  for_who: LEC出る順テキストとセットで過去問演習をしたい人
+  highlights:
+  - 出る順テキストと縦串が明確
+  - 分野別に復習しやすい解説付き
+  - TAC過去問との使い分けがしやすい
+- rank: 3
+  offer_type: book
+  name: 2026年度版 マンション管理士・管理業務主任者 Wマスター過去問集
+  publisher: 早稲田経営出版
+  edition: 2026年度版
+  price_yen: 4400
+  price_note: Amazon税込参考・送料別
+  pages: 1028
+  format: B5判
+  asin: '4847153448'
+  image_file: mankan-book-4847153448.webp
+  amazon_url: https://www.amazon.co.jp/dp/4847153448/ref=nosim?tag=ue083093-22
+  for_who: Wマスターテキスト読了後に過去問メイン1冊を探している人
+  highlights:
+  - Wマスターテキストとセットの定番過去問
+  - マン管・管理業務主任者のW受験向け演習量
+  - 解説付きで復習サイクルを組み立てやすい
+related_links:
+- past-questions-by-year:年度別過去問
+- past-questions-by-field:分野別過去問
+- self-study-start:独学の始め方
+- affiliate-textbooks-recommend:おすすめテキスト
+- affiliate-mock-exam-materials:一問一答・速習
+- pass-score:合格点と合格基準
+operator_note: Amazon tag=ue083093-22。4300120331 / 4844974300 / 4847153448。
