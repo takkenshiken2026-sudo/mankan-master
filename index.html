@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <!--BRAND_ASSET_HEAD-->
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/brand/favicon-48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/brand/apple-touch-icon.png">
@@ -106,64 +108,6 @@
 }
 </script>
 <!--/INDEX_SEO_HEAD-->
-<meta name="theme-color" content="#3f4f8a">
-<meta property="og:image" content="https://mankan-master.jp/assets/brand/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:image" content="https://mankan-master.jp/assets/brand/og-image.png">
-<!-- Schema.org 構造化データ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://mankan-master.jp/#website",
-      "url": "https://mankan-master.jp/",
-      "name": "マン管マスター",
-      "alternateName": "マンション管理士試験対策サイト",
-      "description": "マンション管理士試験の過去問・実践演習・一問一答・用語解説を網羅した無料学習プラットフォーム",
-      "inLanguage": "ja"
-    },
-    {
-      "@type": "EducationalApplication",
-      "@id": "https://mankan-master.jp/#app",
-      "name": "マン管マスター",
-      "alternateName": "マンション管理士試験対策サイト",
-      "description": "マンション管理士試験の過去問・実践演習・一問一答・用語解説を網羅した無料学習プラットフォーム",
-      "applicationCategory": "EducationApplication",
-      "operatingSystem": "Web",
-      "inLanguage": "ja",
-      "educationalLevel": "Professional",
-      "teaches": "マンション管理士試験",
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "無料プラン",
-          "price": "0",
-          "priceCurrency": "JPY"
-        },
-        {
-          "@type": "Offer",
-          "name": "プレミアムプラン",
-          "price": "980",
-          "priceCurrency": "JPY",
-          "billingDuration": "P1M"
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://mankan-master.jp/"},
-        {"@type": "ListItem", "position": 2, "name": "過去問", "item": "https://mankan-master.jp/#past"},
-        {"@type": "ListItem", "position": 3, "name": "実践演習", "item": "https://mankan-master.jp/#orig"},
-        {"@type": "ListItem", "position": 4, "name": "用語解説", "item": "https://mankan-master.jp/terms/"}
-      ]
-    }
-  ]
-}
-</script>
 
 <meta name="format-detection" content="telephone=no">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1580,12 +1524,7 @@ body.is-solving .site-footer{display:none!important}
       </nav>
       <div id="ichi-config" class="ichi-config">
         <p class="ichi-config-lead">分野を選んで「開始」してください。記述が正しいときは○、誤りのときは×で答えます。</p>
-        <div class="field-chips" id="ichi-field-chips">
-          <button type="button" class="chip on" data-field="" onclick="selectIchiField(this)">全分野</button>
-          <button type="button" class="chip" data-field="law" onclick="selectIchiField(this)">法令・制度</button>
-          <button type="button" class="chip" data-field="rights" onclick="selectIchiField(this)">契約・実務</button>
-          <button type="button" class="chip" data-field="limit" onclick="selectIchiField(this)">設備・その他</button>
-        </div>
+        <div class="field-chips" id="ichi-field-chips"></div>
         <button type="button" class="btn-primary ichi-start-btn" onclick="beginIchimondouSession()">開始</button>
       </div>
       <div id="ichi-play-wrap" class="ichi-play-wrap" style="display:none">
@@ -1824,7 +1763,7 @@ body.is-solving .site-footer{display:none!important}
       </div>
 
       <div style="font-size:12px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;margin-top:16px;line-height:1.65">
-        ※ 掲載問題は、公式過去問そのものではなく、著作権上の配慮と最新法令への対応のため問題文・選択肢を編集した「過去問形式」の演習問題です。試験本番の原文・合格基準・試験日程などは<a href="https://www.retio.or.jp/" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:underline">試験実施団体</a>等の公式情報を、法令・通達の原文は<a href="https://www.mlit.go.jp/" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:underline">国土交通省</a>等のウェブサイトをご確認ください。
+        ※ 掲載問題は、公式過去問そのものではなく、著作権上の配慮と最新法令への対応のため問題文・選択肢を編集した「過去問形式」の演習問題です。試験本番の原文・合格基準・試験日程などは<a href="https://www.mankan.org/" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:underline">試験実施団体</a>等の公式情報を、法令・通達の原文は<a href="https://www.mlit.go.jp/" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:underline">国土交通省</a>等のウェブサイトをご確認ください。
       </div>
 
     </div>
@@ -1859,6 +1798,7 @@ body.is-solving .site-footer{display:none!important}
 
     </div>
 
+    <!-- JS無効時のフォールバック (SEOクローラー向け静的コンテンツ) -->
     <!--INDEX_NOSCRIPT-->
     <noscript>
       <div style="max-width:860px;margin:40px auto;padding:0 20px;font-family:sans-serif;line-height:1.8">
@@ -1956,7 +1896,6 @@ function applyCsvImportedQuestions() {
   YEARS = Array.from(yset).sort(function (a, b) { return b - a; });
 }
 </script>
-<link rel="stylesheet" href="site-theme.css">
 <script src="exam-site-data-practice.js"></script>
 <script src="exam-site-data-past.js"></script>
 <script src="exam-site-data-ichimondou.js"></script>
@@ -3125,7 +3064,7 @@ function enterApp(){
   saveUser(u);
   document.getElementById('sb-avatar').textContent=currentUser.name.charAt(0);
   document.getElementById('sb-name').textContent=currentUser.name;
-  buildFieldChips(); buildYearGrid();
+  buildIchiFieldChips(); buildFieldChips(); buildYearGrid();
   gotoPage(_resolveInitialPage());
   const pastPlay = location.hash.match(/^#past-play-(\d+)$/);
   if (pastPlay) reviewQ(parseInt(pastPlay[1], 10));
@@ -3135,6 +3074,7 @@ function enterApp(){
 const PAGE_TITLES={'quiz-start':'問題を解く','past-config':'過去問','quiz':'問題','score':'結果','dash':'記録・分析','review':'復習','analytics':'記録・分析','orig':'実践演習','ichimondou':'一問一答','ichimondou-score':'一問一答・結果'};
 const NAV_PAGE_MAP = {'orig':'orig','quiz-start':'quiz-start','dash':'dash','review':'review','ichimondou':'ichimondou'};
 
+/*INDEX_SPA_PAGE_SEO*/
 // ページごとのSEOメタ情報（SITE_CONFIG から組み立て）
 function _cfgBrand(){ return (window.SITE_CONFIG && SITE_CONFIG.brandName) || 'マン管マスター'; }
 function _cfgExam(){ return (window.SITE_CONFIG && SITE_CONFIG.examName) || 'マンション管理士試験'; }
@@ -3156,6 +3096,7 @@ const PAGE_SEO = {
   'review': _pageSeo('復習', '不正解・未解答の演習問題を分野別にまとめて復習。弱点問題を集中的に解いて定着率を上げる。', '/#review', '#review'),
   'ichimondou': _pageSeo('一問一答', '{exam}の重要知識を一問一答形式で確認。短時間で基礎知識の定着を進められます。', '/#ichimondou', '#ichimondou')
 };
+/*/INDEX_SPA_PAGE_SEO*/
 
 function publicCanonicalUrl(seoPath) {
   const base = String((window.SITE_CONFIG && SITE_CONFIG.siteOrigin) || 'https://mankan-master.jp').replace(/\/$/, '');
@@ -3835,7 +3776,7 @@ function shareIchiResultToX(){
   const s = ichiState.score;
   const att = ichiState.attempts;
   const pct = att > 0 ? Math.round(s / att * 100) : 0;
-  openTwitterShareIntent(`マン管マスター（マンション管理士試験）で一問一答を解きました。\n正答率 ${pct}%（${s}/${att}問）\n合格を目指して学習を続けています。`);
+  openTwitterShareIntent(getSiteShareLabel() + `で一問一答を解きました。\n正答率 ${pct}%（${s}/${att}問）\n合格を目指して学習を続けています。`);
 }
 
 function gotoPage(id, opts){
@@ -4160,6 +4101,12 @@ function toggleYear(y){
 function selectAllYears(){ const allYears=getPastOnlyYearsSorted();quizState.years=[...allYears];allYears.forEach(y=>{const b=document.getElementById('yb'+y);if(b)b.classList.add('on');}); }
 function clearAllYears(){ const allYears=getPastOnlyYearsSorted();if(!allYears.length)return;quizState.years=[allYears[0]];allYears.forEach(y=>{const b=document.getElementById('yb'+y);if(b)b.classList.toggle('on',y===allYears[0]);}); }
 
+function buildIchiFieldChips(){
+  const el=document.getElementById('ichi-field-chips');
+  if(!el)return;
+  el.innerHTML='<button type="button" class="chip on" data-field="" onclick="selectIchiField(this)">全分野</button>'
+    +FIELDS.map(f=>`<button type="button" class="chip" data-field="${f.id}" onclick="selectIchiField(this)">${f.name}</button>`).join('');
+}
 function buildFieldChips(){
   document.getElementById('field-chips').innerHTML=FIELDS.map(f=>
     `<div class="chip on" id="chip-${f.id}" onclick="toggleChip('${f.id}')">${f.name}</div>`).join('');
@@ -4934,7 +4881,7 @@ function buildTwitterShareText(bodyCore){
   return parts.join('\n\n');
 }
 function getSiteShareLabel(){
-  return `${SITE_CONFIG.brandName||'マン管マスター'}（${SITE_CONFIG.examName||'マンション管理士試験'}）`;
+  return _cfgSiteLabel();
 }
 /** X Web Intent：投稿欄の並びは 本文 → URL → ハッシュタグ */
 function openTwitterShareIntent(bodyCore){
@@ -4944,20 +4891,20 @@ function openTwitterShareIntent(bodyCore){
 }
 let lastSessionShareData = null;
 function buildSessionShareText(data){
-  if(!data) return 'マン管マスター（マンション管理士試験）で問題演習をしました。';
+  if(!data) return getSiteShareLabel() + 'で問題演習をしました。';
   const modeLabel = data.mode==='orig' ? '実践演習' : '過去問';
   const line = data.pct>=80
     ? 'この調子で合格に向けて積み上げます。'
     : data.pct>=60
       ? '間違えた問題を復習して、次につなげます。'
       : '解説を読み直して、一問ずつ固めます。';
-  return `マン管マスター（マンション管理士試験）で${modeLabel}を解きました。\n正答率 ${data.pct}%（${data.correct}/${data.total}問）\n${line}`;
+  return getSiteShareLabel() + `で${modeLabel}を解きました。\n正答率 ${data.pct}%（${data.correct}/${data.total}問）\n${line}`;
 }
 function shareSessionResultToX(){
   openTwitterShareIntent(buildSessionShareText(lastSessionShareData));
 }
 function getBadgeShareText(badge){
-  return `マン管マスター（マンション管理士試験）で「${badge.name}」バッジを獲得しました。\n${badge.desc}\n合格を目指して学習を続けています。`;
+  return getSiteShareLabel() + `で「${badge.name}」バッジを獲得しました。\n${badge.desc}\n合格を目指して学習を続けています。`;
 }
 function dismissBadgeShareOverlay(){
   document.getElementById('badge-share-overlay')?.classList.remove('open');
@@ -5351,7 +5298,7 @@ function drawBadgeShareCard(badge){
 let currentLevelUpShare=null;
 function getLevelUpShareText(lu){
   if(!lu) return '';
-  return `マン管マスター（マンション管理士試験）でレベルアップしました！\nLv${lu.prevLv}「${lu.prevLabel}」→ Lv${lu.newLv}「${lu.newLabel}」\n累計${lu.totalAnswered}問の解答を重ねて、一歩ずつ前に進んでいます。合格を目指して学習を続けています。`;
+  return getSiteShareLabel() + `でレベルアップしました！\nLv${lu.prevLv}「${lu.prevLabel}」→ Lv${lu.newLv}「${lu.newLabel}」\n累計${lu.totalAnswered}問の解答を重ねて、一歩ずつ前に進んでいます。合格を目指して学習を続けています。`;
 }
 function drawLevelUpShareCard(lu){
   const canvas=document.getElementById('level-up-share-canvas');
@@ -6193,7 +6140,7 @@ function buildStudyDiaryShareText(isoKey){
   const {answered,correct,pct}=getStudyDayAnswerStats(isoKey);
   const lines=[];
   if(raw) lines.push(raw);
-  lines.push(`【マン管マスター｜マンション管理士試験｜この日の記録（${isoKey}）】`);
+  lines.push(`【${_cfgBrand()}｜${_cfgExam()}｜この日の記録（${isoKey}）】`);
   lines.push(`解答 ${answered}問／正解 ${correct}問／正答率 ${pct}%`);
   lines.push('合格を目指して学習を続けています。');
   return lines.join('\n\n');
@@ -7384,7 +7331,7 @@ if(typeof getUserData==='function'){
 })();
 </script>
 <!-- GA4: tools/html_footer.analytics_snippet と同内容（トップ SPA） -->
-<script>window.__GA4_MEASUREMENT_ID__="G-3F5HESVZ9C";</script>
+<script>window.__GA4_MEASUREMENT_ID__="G-Q47X42S88D";</script>
 <script defer src="site-analytics.js"></script>
 </body>
 </html>
