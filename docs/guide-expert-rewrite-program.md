@@ -10,4 +10,4 @@
 
 **5本 batch の手順:** `docs/guide-hand-rewrite-batch-workflow.md`
 
-**運用:** **マン管を完走してから** 次サイト（正本 §7.3 参照）。現状 expert_pass は **1/129**（`exam-schedule` のみ）。
+**運用:** **マン管を完走してから** 次サイト（正本 §7.3 参照）。マン管 expert_pass **129/129 完走**（2026-06-04）。次: **takken-master**（49本）。
