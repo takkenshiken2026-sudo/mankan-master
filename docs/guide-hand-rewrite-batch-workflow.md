@@ -3,7 +3,7 @@
 試験ガイド記事を **5 slug ずつ** 手書きし、1 batch ごとに公開ゲートを通す手順。
 
 **編集合格（全件）:** [guide-expert-rewrite-program.md](./guide-expert-rewrite-program.md)（正本は `exam-site-shell` 同パス）  
-**お手本:** `exam-schedule` / `tools/mankan_rewrite_exemplar.py`
+**お手本:** 基本 `exam-schedule` / `tools/mankan_rewrite_exemplar.py`、具体例 `study-plan-6months` / `tools/mankan_rewrite_exemplar_concrete.py`
 
 ## 原則
 
@@ -25,7 +25,8 @@
 | `section_1_heading` … `section_5_heading` | 本文と意味一致 |
 | `section_1_body` … `section_5_body` | **各180字以上**（sanitize 後も180字以上推奨） |
 | `faq_1_question` … `faq_3_question` | **質問の重複なし** |
-| `faq_1_answer` … `faq_3_answer` | 各100字以上 |
+| `faq_1_answer` … `faq_3_answer` | 各100字以上（2回答以上に具体例、1回答以上に例えば/たとえば） |
+| `revision_note` | `手書きリライト・具体例` を含める（例: `2026-06-05: 編集合格（手書きリライト・具体例）`） |
 
 ## 1 batch のコマンド
 

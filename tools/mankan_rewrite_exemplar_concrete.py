@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""マン管 guide 具体性＋例示 v1.1 試行（1本: study-plan-6months）。"""
+"""マン管 guide 具体例お手本（1本: study-plan-6months）。"""
 
 from __future__ import annotations
 
@@ -50,7 +50,7 @@ REWRITES: dict[str, dict[str, str]] = {
                 "exam-schedule:試験日程（令和8年度）",
             ]
         ),
-        "revision_note": "2026-06-05: 編集合格（手書きリライト・具体例強化v1.1）",
+        "revision_note": "2026-06-05: 編集合格お手本（手書きリライト・具体例）",
         "section_1_heading": "全体像を分野に分ける",
         "section_1_body": (
             "6か月計画は7分野を月単位で割り当て、浅く広げすぎない構成にします。"
