@@ -937,6 +937,21 @@ body.seo-editorial-preview-page .seo-editorial.seo-article-card .related-box-tit
     font-size: var(--seo-fs-table);
   }
 
+  body.guide-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table th,
+  body.term-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table th,
+  body.compare-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table th,
+  body.numbers-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table th,
+  body.mistakes-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table th,
+  body.seo-editorial-preview-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table th,
+  body.guide-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table td,
+  body.term-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table td,
+  body.compare-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table td,
+  body.numbers-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table td,
+  body.mistakes-article-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table td,
+  body.seo-editorial-preview-page .seo-editorial.seo-article-card .seo-article-section table.seo-info-table td {
+    border: 1px solid var(--seo-table-border);
+  }
+
   body.guide-article-page .seo-editorial.seo-article-card .numbers-matrix-table tbody th[scope="row"],
   body.guide-article-page .seo-editorial.seo-article-card .compare-matrix-table tbody th[scope="row"],
   body.guide-article-page .seo-editorial.seo-article-card .mistakes-matrix-table tbody th[scope="row"],

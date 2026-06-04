@@ -21,6 +21,7 @@ from tools.editorial_quality import norm  # noqa: E402
 from tools.guide_article_rules import GUIDE_MIN_FAQ_ANSWER, GUIDE_MIN_SECTION_BODY  # noqa: E402
 from tools.guide_prose_patterns import scan_prose_text  # noqa: E402
 from tools.guide_rewrite_rules import rewrite_forbidden_hits  # noqa: E402
+from tools.guide_concrete_rewrite_rules import validate_concrete_rewrite  # noqa: E402
 from tools.strip_generic_guide_padding import strip_padding_from_text  # noqa: E402
 
 REQUIRED_KEYS = (
@@ -108,6 +109,8 @@ def validate_rewrites(rewrites: dict[str, dict[str, str]], *, root: Path) -> lis
             visible = _visible_body(slug, text)
             for phrase in rewrite_forbidden_hits(visible):
                 errors.append(f"{prefix} {col} forbidden: {phrase[:32]}…")
+
+        errors.extend(validate_concrete_rewrite(slug, patch))
 
     return errors
 

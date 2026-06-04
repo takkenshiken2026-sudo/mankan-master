@@ -52,7 +52,25 @@ def _comma_list_items(chunk: str) -> list[str]:
     return items
 
 
+_EXAMPLE_PROSE_RE = re.compile(
+    r"例えば|たとえば|具体例として|好比|イメージとして|想像すると"
+)
+
+
+def _block_has_subheading(block: str) -> bool:
+    return any(ln.lstrip().startswith("### ") for ln in block.split("\n"))
+
+
+def _block_has_example_prose(block: str) -> bool:
+    """例示・比喩の叙述ブロックは列挙箇条書きへ分解しない。"""
+    if _block_has_subheading(block):
+        return True
+    return bool(_EXAMPLE_PROSE_RE.search(block))
+
+
 def _try_trigger_list(block: str) -> str | None:
+    if _block_has_example_prose(block):
+        return None
     match = _ENUM_TRIGGER.search(block)
     if match:
         items = _comma_list_items(match.group(2))
@@ -85,7 +103,7 @@ def inject_comma_sentence_list(text: str) -> str:
     blocks = re.split(r"\n{2,}", text.strip())
     out: list[str] = []
     for block in blocks:
-        if block.lstrip().startswith("- "):
+        if block.lstrip().startswith("- ") or _block_has_example_prose(block):
             out.append(block)
             continue
         triggered = _try_trigger_list(block)
@@ -145,7 +163,7 @@ def inject_enumeration_lists(text: str) -> str:
     blocks = re.split(r"\n{2,}", text.strip())
     out_blocks: list[str] = []
     for block in blocks:
-        if block.lstrip().startswith("- "):
+        if block.lstrip().startswith("- ") or _block_has_example_prose(block):
             out_blocks.append(block)
             continue
         triggered = _try_trigger_list(block)
