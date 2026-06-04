@@ -43,6 +43,32 @@ INCOMPLETE_HEADING_TAIL_RE = re.compile(
     re.MULTILINE,
 )
 
+ENRICH_SECTION_PAD_RE = re.compile(
+    r"(?:\s|\n)*"
+    r"(?:「[^」]+」は[^。]+の論点として、公式テキスト該当章[^。]*演習→用語解説→1週間後[^。]*。"
+    r"|[^。]*演習→用語解説→1週間後の解き直しで定着を確認[^。]*。"
+    r"|「[^」]+」は[^。]+の論点として、公式テキスト該当章と[^。]+の案内を照合し、"
+    r"演習→用語解説→1週間後の解き直しで定着を確認してください。"
+    r"(?:数値・日程・合格基準は[^。]+確認してください。?)?"
+    r")"
+    r"[。]?",
+    re.MULTILINE,
+)
+
+ENRICH_FAQ_PAD_RE = re.compile(
+    r"(?:\s|\n)*"
+    r"「[^」]+」は[^。]+(?:の要項と公式テキストで最新情報を確認してください|について[^。]+確認してください)"
+    r"[^。]*条文の主体・期限・数値を演習問題とセットで押さえる[^。]*。"
+    r"[。]?",
+    re.MULTILINE,
+)
+
+AUTO_LEAD_PAD_RE = re.compile(
+    r"^マンション管理士試験の試験の[^。]+について、マ管受験者が現場で迷いやすい[^。]+。"
+    r"3分野の全体像[^。]*。$",
+    re.MULTILINE,
+)
+
 FAQ_GENERIC_PAD_RE = re.compile(
     r"\s*"
     r"(?:合格までの学習を続けるには、出題範囲を分けて、演習と復習を定期的に回す計画が重要です。"
@@ -69,6 +95,9 @@ def strip_padding_from_text(text: str) -> str:
         prev = out
         out = GENERIC_SECTION_PAD_RE.sub("", out)
         out = BROKEN_TITLE_PAD_RE.sub("", out)
+        out = ENRICH_SECTION_PAD_RE.sub("", out)
+        out = ENRICH_FAQ_PAD_RE.sub("", out)
+        out = AUTO_LEAD_PAD_RE.sub("", out)
         out = FAQ_GENERIC_PAD_RE.sub("", out)
         out = INCOMPLETE_HEADING_TAIL_RE.sub("", out)
     out = BROKEN_TOPIC_DE_RE.sub(BROKEN_TOPIC_FIX, out)

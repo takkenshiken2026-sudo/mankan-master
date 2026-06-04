@@ -63,6 +63,9 @@ def _try_trigger_list(block: str) -> str | None:
         items = _comma_list_items(match.group(1))
     if not items:
         return None
+    # 叙述文（述語を含む節）を列挙と誤認しない
+    if any(re.search(r"(?:定める|評価する|確認する|である|してい|なる|について)", item) for item in items):
+        return None
     before = block[: match.start()].rstrip()
     after = block[match.end() :].strip().lstrip("。．. ")
     parts: list[str] = []
@@ -88,6 +91,14 @@ def inject_comma_sentence_list(text: str) -> str:
         triggered = _try_trigger_list(block)
         if triggered:
             out.append(triggered)
+            continue
+        # 定義文（「試験は、…とおり、…です」）を箇条書きに分解しない
+        flat = block.replace("\n", "")
+        if re.search(
+            r"(?:試験|制度|資格)は、.+、.{6,}(?:です|ます|でした|である)[。]?$",
+            flat,
+        ):
+            out.append(block)
             continue
 
         sentences = [s for s in re.split(r"(?<=[。！？])", block) if s.strip()]
@@ -149,6 +160,51 @@ def inject_enumeration_lists(text: str) -> str:
 _MD_LINK = re.compile(r"\[([^\]]+)\]\((https?://[^)\s]+)\)")
 
 
+def _split_pipe_row(line: str) -> list[str]:
+    row = line.strip()
+    if row.startswith("|"):
+        row = row[1:]
+    if row.endswith("|"):
+        row = row[:-1]
+    return [cell.strip() for cell in row.split("|")]
+
+
+def _is_pipe_separator_row(cells: list[str]) -> bool:
+    if not cells:
+        return False
+    return all(re.fullmatch(r":?-{2,}:?", (c or "").replace(" ", "")) for c in cells)
+
+
+def _render_pipe_table(block: str) -> str | None:
+    """Markdown 風パイプ表 → seo-info-table HTML。"""
+    lines = [ln.strip() for ln in block.split("\n") if ln.strip()]
+    if len(lines) < 2 or not all("|" in ln for ln in lines):
+        return None
+    rows = [_split_pipe_row(ln) for ln in lines]
+    if len(rows[0]) < 2:
+        return None
+    if len(rows) > 1 and _is_pipe_separator_row(rows[1]):
+        header, body_rows = rows[0], rows[2:]
+    else:
+        header, body_rows = rows[0], rows[1:]
+    if not body_rows:
+        return None
+    from tools.inline_markup import render_inline_markup
+
+    thead = "<thead><tr>" + "".join(f"<th>{html.escape(h)}</th>" for h in header) + "</tr></thead>"
+    tbody_rows: list[str] = []
+    for row in body_rows:
+        if len(row) < len(header):
+            row = row + [""] * (len(header) - len(row))
+        cells = row[: len(header)]
+        tbody_rows.append(
+            "<tr>"
+            + "".join(f"<td>{render_inline_markup(c)}</td>" for c in cells)
+            + "</tr>"
+        )
+    return f'<table class="seo-info-table">{thead}<tbody>{"".join(tbody_rows)}</tbody></table>'
+
+
 def _render_paragraph(text: str, *, term_hrefs: dict[str, str] | None = None, linked_terms: set[str] | None = None) -> str:
     from tools.inline_markup import render_inline_markup
 
@@ -167,6 +223,10 @@ def _render_block(
     term_hrefs: dict[str, str] | None = None,
     linked_terms: set[str] | None = None,
 ) -> str:
+    table_html = _render_pipe_table(block)
+    if table_html:
+        return table_html
+
     lines = block.split("\n")
     non_empty = [ln for ln in lines if ln.strip()]
     if non_empty and all(ln.lstrip().startswith("- ") for ln in non_empty):
@@ -208,7 +268,7 @@ def seo_section_body_html(
     term_hrefs: dict[str, str] | None = None,
     linked_terms: set[str] | None = None,
 ) -> str:
-    """セクション本文 HTML。`- ` 行・`;` 区切り・`###` 小見出しに対応。"""
+    """セクション本文 HTML。`- ` 行・`;` 区切り・`###` 小見出し・パイプ表に対応。"""
     body = (transform(text) if transform else text).strip()
     if not body:
         return ""

@@ -147,10 +147,15 @@ def check_guide_row(
                 issues.append(issue)
 
     faq_answers: list[str] = []
+    faq_questions: list[str] = []
     for n in range(1, 4):
         qcol = f"faq_{n}_question"
         acol = f"faq_{n}_answer"
         q, a = norm(row.get(qcol)), norm(row.get(acol))
+        if q:
+            if published and q in faq_questions:
+                err(qcol, f"FAQ質問が重複しています: {q}")
+            faq_questions.append(q)
         if q and not a:
             err(acol, f"{qcol} に対する {acol} が空です")
         visible_a = reader_facing_text(row, acol, a) if published and a else a

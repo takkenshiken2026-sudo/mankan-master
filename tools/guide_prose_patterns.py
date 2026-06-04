@@ -56,6 +56,16 @@ REWRITE_FALLBACK_RE = re.compile(
 GENERIC_SECTION_PAD_RE = re.compile(
     r"主体・期限・数値をメモしながら演習問題で定着を確認"
 )
+ENRICH_SECTION_PAD_RE = re.compile(
+    r"の論点として、公式テキスト該当章|"
+    r"演習→用語解説→1週間後の解き直しで定着を確認"
+)
+ENRICH_FAQ_PAD_RE = re.compile(
+    r"条文の主体・期限・数値を演習問題とセットで押さえると解答精度が上がります"
+)
+AUTO_LEAD_TEMPLATE_RE = re.compile(
+    r"マ管受験者が現場で迷いやすい論点|3分野の全体像"
+)
 FAQ_GENERIC_PAD_RE = re.compile(
     r"合格までの学習を続けるには、出題範囲を分けて、演習と復習を定期的に回す計画が重要"
 )
@@ -111,6 +121,9 @@ def scan_prose_text(
         ("meta_confirm_pad", META_CONFIRM_PAD_RE),
         ("rewrite_fallback", REWRITE_FALLBACK_RE),
         ("generic_section_pad", GENERIC_SECTION_PAD_RE),
+        ("enrich_section_pad", ENRICH_SECTION_PAD_RE),
+        ("enrich_faq_pad", ENRICH_FAQ_PAD_RE),
+        ("auto_lead_template", AUTO_LEAD_TEMPLATE_RE),
         ("faq_generic_pad", FAQ_GENERIC_PAD_RE),
         ("broken_niha_split", BROKEN_NIHA_SPLIT_RE),
     ]

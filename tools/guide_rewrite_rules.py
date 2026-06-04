@@ -29,6 +29,9 @@ REWRITE_FORBIDDEN_PHRASES: tuple[str, ...] = (
     "legacy batch",
     "主体・期限・数値をメモしながら演習問題で定着を確認",
     "合格までの学習を続けるには、出題範囲を分けて、演習と復習を定期的に回す計画が重要",
+    "の論点として、公式テキスト該当章",
+    "条文の主体・期限・数値を演習問題とセットで押さえる",
+    "マ管受験者が現場で迷いやすい論点",
 )
 
 # 本文に slug 名が露出（takken-foo 等）
@@ -69,11 +72,7 @@ def is_hand_rewritten(row: dict[str, str]) -> bool:
 
 
 def rewrite_exempt(row: dict[str, str]) -> bool:
-    """監査・ERROR 対象外（手書き済みアフィリエイト等）。"""
-    if is_hand_rewritten(row):
-        return True
-    if is_affiliate_row(row) and is_hand_rewritten(row):
-        return True
+    """量産テンプレ自動差し替えの対象外（禁止句チェックは別途常時実施）。"""
     return False
 
 
