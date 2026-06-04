@@ -178,6 +178,11 @@ REWRITES: dict[str, dict[str, str]] = {
                 "不明点は申込前にマン管センターへ問い合わせる",
             ]
         ),
+        "section_1_heading": "学歴と受験資格の関係",
+        "section_2_heading": "確認のタイミングと計画",
+        "section_3_heading": "必要な証明書類",
+        "section_4_heading": "申込手順の流れ",
+        "section_5_heading": "申込前チェックリスト",
         "section_1_body": (
             "マンション管理士試験は、学歴単独ではなく、"
             "実務経験・研修・選任歴などと組み合わせた区分で受験資格が定められています。"

@@ -101,6 +101,11 @@ REWRITES: dict[str, dict[str, str]] = {
                 "不明点は申込前にマン管センターへ問い合わせる",
             ]
         ),
+        "section_1_heading": "免除制度の確認手順",
+        "section_2_heading": "他資格・研修との関係",
+        "section_3_heading": "申込時の手数料と書類",
+        "section_4_heading": "免除申込の流れ",
+        "section_5_heading": "申込前チェックリスト",
         "section_1_body": (
             "免除制度を確認する前に、通常の受験資格を把握します。"
             "マン管センター要項の受験資格章で自分の区分を特定し、"

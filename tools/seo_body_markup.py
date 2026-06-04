@@ -99,7 +99,9 @@ def inject_comma_sentence_list(text: str) -> str:
                 continue
             if "とは、" in sent:
                 continue
-            pos = sent.rfind("は、")
+            pos = -1
+            for m in re.finditer(r"(?<![に])は、", sent):
+                pos = m.start()
             chunk = sent[pos + 2 :] if pos >= 0 else sent
             chunk = re.sub(r"(?:です|ます|でした|である|であり)[。]?$", "", chunk.strip())
             chunk = chunk.rstrip("。")

@@ -19,9 +19,9 @@ from tools.fix_guide_duplicate_bodies import load_site_lib  # noqa: E402
 from tools.guide_content_shared import (  # noqa: E402
     action_items_prose,
     faq_official_verify_answer,
-    section_body_min_filler,
     user_intent_prose,
 )
+from tools.strip_generic_guide_padding import strip_padding_from_text  # noqa: E402
 from tools.guide_prose_patterns import (  # noqa: E402
     BROKEN_FALLBACK_RE,
     FAQ_ARROW_RE,
@@ -104,14 +104,9 @@ def repair_faq_answer(text: str, *, question: str, topic: str, lib) -> str:
 
 
 def repair_section_body(text: str, *, heading: str, topic: str, official: str) -> str:
-    out = strip_meta_section_tails(repair_generic_study_phrases(norm(text)))
+    out = strip_padding_from_text(strip_meta_section_tails(repair_generic_study_phrases(norm(text))))
     if TAIL_SECTION_REF_RE.search(out):
         out = strip_meta_section_tails(out)
-    visible = out
-    if len(visible) < 180:
-        filler = section_body_min_filler(heading, topic, official)
-        if filler not in visible:
-            out = f"{visible}\n\n{filler}".strip()
     return out
 
 

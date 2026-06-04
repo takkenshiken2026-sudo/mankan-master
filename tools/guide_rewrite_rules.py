@@ -27,6 +27,8 @@ REWRITE_FORBIDDEN_PHRASES: tuple[str, ...] = (
     "受験資格・日程・合格基準の確認手順と、演習・用語解説を組み合わせた学習の始め方",
     "guide_expert_writer",
     "legacy batch",
+    "主体・期限・数値をメモしながら演習問題で定着を確認",
+    "合格までの学習を続けるには、出題範囲を分けて、演習と復習を定期的に回す計画が重要",
 )
 
 # 本文に slug 名が露出（takken-foo 等）

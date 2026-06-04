@@ -24,6 +24,11 @@ REWRITES: dict[str, dict[str, str]] = {
                 "合格発表日をカレンダー登録し、再受験時の申込期間も控える",
             ]
         ),
+        "section_1_heading": "年間スケジュールの流れ",
+        "section_2_heading": "申込期間と手数料",
+        "section_3_heading": "試験日から逆算した学習計画",
+        "section_4_heading": "受験票と当日確認",
+        "section_5_heading": "見落としやすいポイント",
         "section_1_body": (
             "年間スケジュールは、公益財団法人マンション管理センター（以下マン管センター）の"
             "試験案内が正本です。おおむね次の流れで進みます。\n\n"
