@@ -17,7 +17,12 @@ if str(ROOT) not in sys.path:
 from tools.build_article_pages import resolve_guide_section_body, sanitize_guide_text  # noqa: E402
 from tools.editorial_quality import is_published_guide, norm  # noqa: E402
 from tools.guide_rewrite_quality import prose_quality_status, revision_is_hand  # noqa: E402
-from tools.guide_rewrite_rules import rewrite_forbidden_hits, slug_leaks_in_text, tier_priority  # noqa: E402
+from tools.guide_rewrite_rules import (  # noqa: E402
+    is_affiliate_row,
+    rewrite_forbidden_hits,
+    slug_leaks_in_text,
+    tier_priority,
+)
 
 PROSE_COLS = (
     "lead",
