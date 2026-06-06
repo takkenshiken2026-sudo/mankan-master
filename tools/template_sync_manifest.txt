@@ -30,6 +30,17 @@ tools/csv_to_exam_site_ichimondou_js.py
 tools/import_orig_questions_to_practice_csv.py
 tools/import_base_questions_to_ichimon_csv.py
 tools/validate_csv.py
+tools/guide_article_rules.py
+tools/guide_rewrite_rules.py
+tools/guide_rewrite_quality.py
+tools/guide_rewrite_campaign.py
+tools/audit_guide_rewrite_inventory.py
+tools/validate_guide_hand_batch.py
+tools/validate_guide_rewrite.py
+tools/affiliate_article_rules.py
+tools/affiliate_links.py
+tools/seo_body_markup.py
+tools/inline_markup.py
 tools/validate_generated_seo.py
 tools/audit_integration_rules.py
 tools/validate_site_integration.py
@@ -47,5 +58,7 @@ docs/guide-article-catalog.md
 docs/multi-site-workflow.md
 docs/integration-checklist.md
 docs/question-static-pages.md
+docs/guide-hand-rewrite-batch-workflow.md
+docs/affiliate/affiliate-article-rules.md
 
 .cursor/rules/

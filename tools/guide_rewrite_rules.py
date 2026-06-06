@@ -72,8 +72,8 @@ def is_hand_rewritten(row: dict[str, str]) -> bool:
 
 
 def rewrite_exempt(row: dict[str, str]) -> bool:
-    """量産テンプレ自動差し替えの対象外（禁止句チェックは別途常時実施）。"""
-    return False
+    """手書きリライトキャンペーン対象外（アフィリエイトは affiliate_article_rules）。"""
+    return is_affiliate_row(row)
 
 
 def rewrite_forbidden_hits(text: str) -> list[str]:
@@ -83,8 +83,8 @@ def rewrite_forbidden_hits(text: str) -> list[str]:
     return [p for p in REWRITE_FORBIDDEN_PHRASES if p in t]
 
 
-def slug_leaks_in_text(text: str, slug: str) -> list[str]:
-    """本文中の slug 名露出（内部記法）。"""
+def slug_leaks_in_text(text: str, slug: str, *, slug_set: set[str] | None = None) -> list[str]:
+    """本文中の slug 名露出（内部記法）。slug_set があるときは既知 slug のみ対象。"""
     t = norm(text)
     if not t or not slug:
         return []
@@ -96,8 +96,9 @@ def slug_leaks_in_text(text: str, slug: str) -> list[str]:
         if token in SLUG_IN_BODY_ALLOW:
             continue
         if "-" in token and len(token) >= 8 and token != slug:
-            # 他 slug 参照（related 混入）
             if re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)+", token):
+                if slug_set is not None and token not in slug_set:
+                    continue
                 hits.append(token)
     return hits
 

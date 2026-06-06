@@ -9,9 +9,20 @@
 
 1. **batch 正本**（`tools/*_rewrite_batchN.py` の `REWRITES`）が唯一の本文ソース
 2. **`enrich_short_guide_sections` は使わない**（180字未満は batch で書き足す）
-3. **`revision_note` に手書きとあっても禁止句・量産パターンは ERROR**
+3. **`revision_note` に手書きとあっても禁止句・量産パターンは ERROR**（**非アフィリエイトのみ**）
 4. **1 batch = 5 slug**、ジャンル単位で揃える（例: 試験概要5本）
 5. **1 batch ごとに目視5本** → 問題があれば apply 前に batch を直す
+
+### アフィリエイト記事（対象外）
+
+`tags` に **`アフィリエイト`** がある行は **本手順の対象外** です。手書き batch（`validate_guide_hand_batch.py`）に含めないでください。
+
+| 種別 | 正本 | 合格印（例） |
+|------|------|-------------|
+| 通常ガイド | 本書・`guide-prose-quality.mdc` | `編集合格（手書きリライト）` |
+| アフィリエイト | [affiliate/affiliate-article-rules.md](./affiliate/affiliate-article-rules.md) | `Amazon URL確定・本文全面リライト` 等 |
+
+検証: `tools/affiliate_article_rules.py`（`validate_csv.py` から自動適用）
 
 ## batch 必須列（各 slug）
 
