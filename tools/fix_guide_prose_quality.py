@@ -37,6 +37,25 @@ TAIL_SENTENCE_RE = re.compile(
 )
 BROKEN_POINTS_RE = re.compile(r"の要点を。\s*")
 FAQ_ARROW_FIX_RE = re.compile(r"「([^」]+)」→\s*")
+FAQ_META_TAIL_RE = re.compile(
+    r"^(?:数値・主体・手順は[^。\n]+(?:最新案内|最新要項)と照合してください。)\s*",
+    re.MULTILINE,
+)
+FAQ_MIN_LEN = 100
+FAQ_REPLACE_PATTERNS = frozenset(
+    {
+        "enrich_faq_pad",
+        "faq_generic_pad",
+        "meta_confirm_pad",
+        "rewrite_fallback",
+        "generic_section_pad",
+        "enrich_section_pad",
+        "subject_boiler",
+        "broken_fallback",
+        "faq_arrow",
+        "auto_lead_template",
+    }
+)
 
 GENERIC_STUDY_REPLACEMENTS: tuple[tuple[str, str], ...] = (
     ("リンクか。ら混同語", "リンクから混同しやすい語"),
@@ -86,20 +105,40 @@ def strip_meta_section_tails(text: str) -> str:
     return out.rstrip()
 
 
+def faq_needs_rewrite(text: str) -> bool:
+    cleaned = FAQ_META_TAIL_RE.sub("", norm(text)).strip()
+    if not cleaned:
+        return True
+    if len(cleaned) < FAQ_MIN_LEN:
+        return True
+    hits = scan_prose_text(cleaned, column="faq_2_answer")
+    return any(hit.pattern in FAQ_REPLACE_PATTERNS for hit in hits)
+
+
+def official_faq_answer(*, question: str, topic: str, lib) -> str:
+    official = getattr(lib, "OFFICIAL", "試験実施団体（公式）")
+    out = faq_official_verify_answer(
+        question,
+        topic,
+        getattr(lib, "EXAM", ""),
+        getattr(lib, "EXAM_SHORT", ""),
+        official,
+    )
+    if len(out) < FAQ_MIN_LEN:
+        out = f"{out} 最新情報は{official}の案内で確認してください。"
+    return out
+
+
 def repair_faq_answer(text: str, *, question: str, topic: str, lib) -> str:
-    out = norm(text)
-    if not out:
-        return out
+    question = norm(question)
+    out = strip_padding_from_text(norm(text))
+    out = FAQ_META_TAIL_RE.sub("", out).strip()
     out = FAQ_ARROW_FIX_RE.sub(r"「\1」については、", out)
     out = re.sub(r"FAQ\d+「」→\s*", "", out)
-    if SUBJECT_BOILER_RE.search(out):
-        out = faq_official_verify_answer(
-            question,
-            topic,
-            getattr(lib, "EXAM", ""),
-            getattr(lib, "EXAM_SHORT", ""),
-            getattr(lib, "OFFICIAL", "試験実施団体（公式）"),
-        )
+    if question and (not out or faq_needs_rewrite(out) or SUBJECT_BOILER_RE.search(out)):
+        out = official_faq_answer(question=question, topic=topic, lib=lib)
+    elif len(out) < FAQ_MIN_LEN and question:
+        out = official_faq_answer(question=question, topic=topic, lib=lib)
     return repair_broken_fallback(out)
 
 
@@ -185,7 +224,7 @@ def fix_guide_row(row: dict[str, str], *, lib, official: str) -> bool:
         acol = f"faq_{idx}_answer"
         question = norm(row.get(qcol))
         answer = norm(row.get(acol))
-        if not answer:
+        if not question:
             continue
         fixed = repair_faq_answer(answer, question=question, topic=topic, lib=lib)
         if fixed != answer:
