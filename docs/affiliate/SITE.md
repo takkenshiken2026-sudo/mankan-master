@@ -28,8 +28,8 @@
 | `images/affiliate/` | 9 webp |
 | `guideIndexPicks` | **未設定** |
 | 通常ガイド published | 126 |
-| 通常ガイド → 比較記事（`related_links`） | **0 / 126** |
-| 通常ガイド → 比較記事（本文 slug） | **0 / 126** |
+| 通常ガイド → 比較記事（`related_links`） | **59 / 126** |
+| 通常ガイド → 比較記事（本文 slug） | **59 / 126** |
 
 ### 重要な発見（要修正）
 
@@ -80,7 +80,7 @@
 
 ## 通常ガイド導線
 
-- **現状:** 0 / 126（未接続）
+- **現状:** 59 / 126（2026-06-14 フェーズE完了）
 - **優先接続候補（slug）:** `self-study-start`, `textbook-selection`, `problem-book-selection`, `correspondence-course-guide`, `study-plan-beginner`, `past-questions-by-year`, `past-questions-by-field`
 - **除外候補:** `pass-rate`, `after-pass-procedure`, `career-after-qualification`, `exam-venue-and-region`, `compare-similar-qualifications`
 
@@ -119,7 +119,7 @@
 | B エンジン同期 | **完了** | 2026-06-12 | sync 29 + build_all OK。hub付き3本再生成 |
 | C 比較記事 HTML（hub付き） | 未 | | 3本 hub 確認済み・目視待ち |
 | D guideIndexPicks | 未 | | 講座 slug 公開後 |
-| E 通常ガイド導線 | 未 | | 0/126 |
+| E 通常ガイド導線 | **完了** | 2026-06-14 | 59/126（related_links+本文slug） |
 | F 比較記事4本 | 未 | | 3本 ASP 済み + 講座1本 |
 | G 本番確認 | 未 | | フェーズBのみデプロイ済み（2026-06-12） |
 
