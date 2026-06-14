@@ -77,9 +77,19 @@ def is_affiliate_article(row: dict[str, str]) -> bool:
     return AFFILIATE_TAG in tags
 
 
+INTERNAL_AFFILIATE_SLUGS = frozenset({"affiliate-free-vs-paid-study"})
+
+
+def is_internal_affiliate_article(row: dict[str, str]) -> bool:
+    """収益リンクなし・内部導線のみのアフィリエイト記事（asp=internal）。"""
+    return norm(row.get("slug")) in INTERNAL_AFFILIATE_SLUGS
+
+
 def affiliate_article_is_buildable(row: dict[str, str]) -> bool:
     """Affiliate rows without ASP URLs are not published as HTML."""
     if not is_affiliate_article(row):
+        return True
+    if is_internal_affiliate_article(row):
         return True
     return bool(affiliate_external_links_in_row(row))
 

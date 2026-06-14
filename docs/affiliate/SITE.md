@@ -47,7 +47,7 @@
 | `affiliate-textbooks-recommend` | あり | Amazon×3 | あり | なし | 手書き 2026-06-04。本文に「広告・アフィリエイト」表記あり（v2 で除去候補） |
 | `affiliate-problem-books` | あり | Amazon×3 | あり | なし | 同上 |
 | `affiliate-mock-exam-materials` | あり | Amazon×3 | あり | なし | 一問一答・速習（フェーズFの4本目候補） |
-| `affiliate-free-vs-paid-study` | なし | **なし** | **なし** | — | 導線専用・収益リンクなし（`asp=internal`） |
+| `affiliate-free-vs-paid-study` | なし | **なし** | **あり** | — | 導線専用・収益リンクなし（`asp=internal`）v2 2026-06-12 |
 
 ## draft（次に公開候補）
 
@@ -121,7 +121,7 @@
 | D guideIndexPicks | 未 | | 講座 slug 公開後 |
 | E 通常ガイド導線 | 未 | | 0/126 |
 | F 比較記事4本 | 未 | | 3本 ASP 済み + 講座1本 |
-| G 本番確認 | 未 | | |
+| G 本番確認 | 未 | | フェーズBのみデプロイ済み（2026-06-12） |
 
 ### 次のアクション（フェーズC へ）
 
@@ -129,7 +129,17 @@
 2. **講座ASP確定** → `affiliate-online-course-compare` brief + published（guideIndexPicks 前提）
 3. **フェーズD:** `guideIndexPicks`（講座公開後に grid-3）
 4. **フェーズE:** 通常ガイド導線（目標 40〜60本）
-5. **品質:** 公開記事 v2 リライトはフェーズG前後
+5. **品質:** 公開記事 v2 リライト（1本ずつ）— 下表参照
+
+### アフィリエイト記事リライト進捗
+
+| # | slug | 状態 | 主な問題 |
+|---|------|------|----------|
+| ① | `affiliate-textbooks-recommend` | **完了 v2** | 2026-06-12 | 定型除去・商品別具体例・FAQ・価格再確認 |
+| ② | `affiliate-problem-books` | **完了 v2** | 2026-06-12 | 定型除去・商品別具体例・FAQ・価格再確認 |
+| ③ | `affiliate-mock-exam-materials` | **完了 v2** | 2026-06-12 | 定型除去・商品別具体例・FAQ・価格再確認 |
+| ④ | `affiliate-free-vs-paid-study` | **完了 v2** | 2026-06-12 | 定型除去・7分野修正・判断フロー・FAQ・HTML生成（internal例外） |
+
 
 ### フェーズB 結果（2026-06-12）
 
@@ -142,9 +152,10 @@
 | `affiliate-textbooks-recommend` | あり | **あり** | あり | webp×3 |
 | `affiliate-problem-books` | あり | **あり** | あり | webp×3 |
 | `affiliate-mock-exam-materials` | あり | **あり** | あり | webp×3 |
-| `affiliate-free-vs-paid-study` | なし | — | — | —（ASPなし・skip） |
+| `affiliate-free-vs-paid-study` | **あり** | — | — | —（asp=internal・収益リンクなし） |
 
 - テンプレ drift: **ok=77 / drift=0**
+- **本番デプロイ（フェーズB）:** commit `302d26b5` → CI 成功（build 1m37s + deploy 8s）
 - **次:** フェーズC 目視 → 講座ASP → フェーズD〜E
 
 ### フェーズA ゲート

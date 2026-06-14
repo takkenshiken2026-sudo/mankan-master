@@ -6,7 +6,7 @@ layout: product-comparison
 asp_primary: amazon
 comparison_kind: books
 comparison_title: おすすめ問題集3選（比較）
-price_disclaimer: 価格・在庫は執筆時点（2026-06-04）のAmazon税込参考です。購入前に販売ページで最新版を確認してください。
+price_disclaimer: 価格・在庫は執筆時点（2026-06-12）のAmazon税込参考です。購入前に販売ページで最新版を確認してください。
 products:
 - rank: 1
   offer_type: book
@@ -66,4 +66,5 @@ related_links:
 - affiliate-textbooks-recommend:おすすめテキスト
 - affiliate-mock-exam-materials:一問一答・速習
 - pass-score:合格点と合格基準
-operator_note: Amazon tag=ue083093-22。4300120331 / 4844974300 / 4847153448。
+operator_note: Amazon tag=ue083093-22。4300120331 / 4844974300 / 4847153448。2026-06-12
+  Amazon税込 2,860円 / 2,750円 / 4,400円確認。
