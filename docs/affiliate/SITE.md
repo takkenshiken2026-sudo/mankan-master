@@ -26,7 +26,7 @@
 | **比較記事 HTML 生成** | **3**（hub付き3本。`free-vs-paid` は ASPなしで skip） |
 | brief YAML | 3 |
 | `images/affiliate/` | 9 webp |
-| `guideIndexPicks` | **未設定** |
+| `guideIndexPicks` | **2枚（grid-2）** — テキスト・問題集 |
 | 通常ガイド published | 126 |
 | 通常ガイド → 比較記事（`related_links`） | **59 / 126** |
 | 通常ガイド → 比較記事（本文 slug） | **59 / 126** |
@@ -64,17 +64,15 @@
 
 ## guideIndexPicks
 
-- **現状:** `site-config.json` にキーなし
-- **目標:** 公開比較記事が **講座+テキスト+問題集** そろってから `grid-3` で3枚導入
-- **想定 href（案）:**
+- **現状:** `site-config.json` に **2枚・grid-2**（テキスト・問題集）— 2026-06-14 導入
+- **講座スロット:** `affiliate-online-course-compare` 公開後に3枚目を追加し `grid-3` へ移行予定
+- **設定:**
 
-| kind | href | image（案） | 状態 |
-|------|------|-------------|------|
-| 講座 | `affiliate-online-course-compare/` | 要用意 | **draft・ASP 未確定** |
-| テキスト | `affiliate-textbooks-recommend/` | `mankan-book-4300120218.webp` | 公開済み |
-| 問題集 | `affiliate-problem-books/` | `mankan-book-4300120331.webp` | 公開済み |
-
-代替案: 3枚目を `affiliate-mock-exam-materials/`（一問一答）にする場合は設計メモに明記すること。
+| kind | href | image | 状態 |
+|------|------|-------|------|
+| テキスト | `affiliate-textbooks-recommend/` | `mankan-book-4300120218.webp` | **掲出中** |
+| 問題集 | `affiliate-problem-books/` | `mankan-book-4300120331.webp` | **掲出中** |
+| 講座 | `affiliate-online-course-compare/` | 要用意 | draft・ASP 未確定 |
 
 ---
 
@@ -118,7 +116,7 @@
 | A 現状把握 | **完了** | 2026-06-12 | 本ファイル |
 | B エンジン同期 | **完了** | 2026-06-12 | sync 29 + build_all OK。hub付き3本再生成 |
 | C 比較記事 HTML（hub付き） | 未 | | 3本 hub 確認済み・目視待ち |
-| D guideIndexPicks | 未 | | 講座 slug 公開後 |
+| D guideIndexPicks | **一部完了** | 2026-06-14 | 2枚 grid-2（講座待ちで3枚化） |
 | E 通常ガイド導線 | **完了** | 2026-06-14 | 59/126（related_links+本文slug） |
 | F 比較記事4本 | **完了** | 2026-06-14 | 公開4本の相互 related_links + 本文slug |
 | G 本番確認 | 未 | | フェーズBのみデプロイ済み（2026-06-12） |

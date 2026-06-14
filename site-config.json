@@ -270,6 +270,38 @@
       "legacyGlossaryCat": "limit"
     }
   ],
+  "guideIndexPicks": {
+    "title": "おすすめのテキスト・問題集",
+    "lead": "2026年度版の比較記事から、テキストと問題集の選び方へ。",
+    "leadsByHub": {
+      "articles": "2026年度版の比較記事から、テキストと問題集の選び方へ。",
+      "terms": "用語暗記と併用するテキスト・問題集の比較記事へ。",
+      "q": "無料演習と併用するテキスト・問題集の比較記事へ。"
+    },
+    "layout": "grid-2",
+    "items": [
+      {
+        "kind": "textbook",
+        "kindLabel": "テキスト",
+        "title": "おすすめテキスト3選【2026年度版】",
+        "description": "TAC・Wマスター・LEC出る順の3冊を比較。7分野50問120分と48％ラインを前提に、6月開始から逆算した1冊選びを解説します。",
+        "href": "affiliate-textbooks-recommend/",
+        "cta": "3冊を比較する",
+        "image": "images/affiliate/mankan-book-4300120218.webp",
+        "imageAlt": "2026年度版 みんなが欲しかった! マンション管理士 合格へのはじめの一歩 表紙"
+      },
+      {
+        "kind": "problem-book",
+        "kindLabel": "問題集",
+        "title": "おすすめ問題集3選【過去8年・分野別】",
+        "description": "TAC過去8年・LEC分野別・Wマスター過去問の3冊を比較。テキスト読了後の演習1冊と9月切替の具体例をまとめます。",
+        "href": "affiliate-problem-books/",
+        "cta": "3冊を比較する",
+        "image": "images/affiliate/mankan-book-4300120331.webp",
+        "imageAlt": "2026年度版 マンション管理士 項目別過去8年問題集 表紙"
+      }
+    ]
+  },
   "externalLinks": [
     {
       "url": "https://www.mankan.org/",
