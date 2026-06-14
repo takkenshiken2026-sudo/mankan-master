@@ -44,9 +44,9 @@
 
 | slug | brief | ASP（CSV） | HTML | hub | 備考 |
 |------|-------|------------|------|-----|------|
-| `affiliate-textbooks-recommend` | あり | Amazon×3 | あり | なし | 手書き 2026-06-04。本文に「広告・アフィリエイト」表記あり（v2 で除去候補） |
-| `affiliate-problem-books` | あり | Amazon×3 | あり | なし | 同上 |
-| `affiliate-mock-exam-materials` | あり | Amazon×3 | あり | なし | 一問一答・速習（フェーズFの4本目候補） |
+| `affiliate-textbooks-recommend` | あり | Amazon×3 | あり | **あり** | v2 2026-06-12。相互リンク済み |
+| `affiliate-problem-books` | あり | Amazon×3 | あり | **あり** | v2 2026-06-12。相互リンク済み |
+| `affiliate-mock-exam-materials` | あり | Amazon×3 | あり | **あり** | v2 2026-06-12。相互リンク済み |
 | `affiliate-free-vs-paid-study` | なし | **なし** | **あり** | — | 導線専用・収益リンクなし（`asp=internal`）v2 2026-06-12 |
 
 ## draft（次に公開候補）
@@ -120,7 +120,7 @@
 | C 比較記事 HTML（hub付き） | 未 | | 3本 hub 確認済み・目視待ち |
 | D guideIndexPicks | 未 | | 講座 slug 公開後 |
 | E 通常ガイド導線 | **完了** | 2026-06-14 | 59/126（related_links+本文slug） |
-| F 比較記事4本 | 未 | | 3本 ASP 済み + 講座1本 |
+| F 比較記事4本 | **完了** | 2026-06-14 | 公開4本の相互 related_links + 本文slug |
 | G 本番確認 | 未 | | フェーズBのみデプロイ済み（2026-06-12） |
 
 ### 次のアクション（フェーズC へ）
