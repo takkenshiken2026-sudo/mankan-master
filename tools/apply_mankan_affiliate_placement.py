@@ -21,7 +21,6 @@ PLACEMENTS: dict[str, str] = {
     "self-study-roadmap": "affiliate-textbooks-recommend",
     "self-study-schedule": "affiliate-textbooks-recommend",
     "self-study-without-school": "affiliate-textbooks-recommend",
-    "study-plan": "affiliate-textbooks-recommend",
     "study-plan-beginner": "affiliate-textbooks-recommend",
     "study-plan-3months": "affiliate-textbooks-recommend",
     "study-plan-6months": "affiliate-textbooks-recommend",
@@ -43,9 +42,11 @@ PLACEMENTS: dict[str, str] = {
     "past-questions-wrong-reasons": "affiliate-problem-books",
     "scope-vs-past-questions": "affiliate-problem-books",
     "drill-volume-guide": "affiliate-problem-books",
-    "field-law-past-question-focus": "affiliate-problem-books",
-    "field-limit-past-question-focus": "affiliate-problem-books",
-    "field-rights-past-question-focus": "affiliate-problem-books",
+    "self-study-start": "affiliate-textbooks-recommend",
+    "self-study-mistakes": "affiliate-textbooks-recommend",
+    "study-hours-myth": "affiliate-beginner-material-set",
+    "difficulty-for-beginners": "affiliate-beginner-material-set",
+    "calculation-drill": "affiliate-mock-exam-materials",
     "bookmark-review-method": "affiliate-problem-books",
     "almost-correct-review": "affiliate-problem-books",
     "mistake-notebook": "affiliate-problem-books",
@@ -66,24 +67,17 @@ PLACEMENTS: dict[str, str] = {
     "mental-prep-exam-day": "affiliate-mock-exam-materials",
     "exam-day-time-allocation": "affiliate-mock-exam-materials",
     "ichimon-practice": "affiliate-mock-exam-materials",
-    # 無料/有料・独学判断
-    "free-materials-online": "affiliate-free-vs-paid-study",
-    "self-study-start": "affiliate-free-vs-paid-study",
-    "self-study-mistakes": "affiliate-free-vs-paid-study",
-    "self-study-motivation": "affiliate-free-vs-paid-study",
-    "balance-work-study": "affiliate-free-vs-paid-study",
-    "time-management": "affiliate-free-vs-paid-study",
-    "study-hours-myth": "affiliate-free-vs-paid-study",
-    "correspondence-course-guide": "affiliate-free-vs-paid-study",
-    "pass-only-past-questions-myth": "affiliate-free-vs-paid-study",
-    "common-misconceptions": "affiliate-free-vs-paid-study",
+    # 初学者セット（ASP URL 確定済みのみ）
+    "study-plan": "affiliate-beginner-material-set",
+    "study-plan-beginner": "affiliate-beginner-material-set",
+    "first-time-exam-guide": "affiliate-beginner-material-set",
 }
 
 AFFILIATE_LABELS: dict[str, str] = {
     "affiliate-textbooks-recommend": "おすすめテキスト3選",
     "affiliate-problem-books": "おすすめ問題集3選",
     "affiliate-mock-exam-materials": "おすすめ一問一答・速習",
-    "affiliate-free-vs-paid-study": "無料と有料教材の使い分け",
+    "affiliate-beginner-material-set": "初学者向け教材セット3選",
 }
 
 # slug 別の本文1文（未指定は affiliate 既定文）
@@ -93,15 +87,6 @@ BODY_SENTENCES: dict[str, str] = {
     ),
     "problem-book-selection": (
         "問題集1冊は、affiliate-problem-books で過去8年・分野別の違いを比較してからテキスト系列に合わせて選ぶと失敗が少ないです。"
-    ),
-    "free-materials-online": (
-        "無料だけでどこまで進むかは、affiliate-free-vs-paid-study で48％ラインと段階投入の具体例を先に確認すると安心です。"
-    ),
-    "self-study-start": (
-        "教材投資のタイミングは、affiliate-free-vs-paid-study で無料範囲と最小2冊セットを確認してから進めると無駄がありません。"
-    ),
-    "correspondence-course-guide": (
-        "通信講座を検討する前に、affiliate-free-vs-paid-study で独学の最小セットと費用判断を先に整理すると選び直しが減ります。"
     ),
     "past-questions-by-year": (
         "演習用の問題集は、affiliate-problem-books で7分野50問120分に合う1冊を先に決めると年別周回が立てやすいです。"
@@ -121,8 +106,8 @@ DEFAULT_BODY: dict[str, str] = {
     "affiliate-mock-exam-materials": (
         "直前の短問演習は、affiliate-mock-exam-materials で一問一答と速習を比較してから1冊を選ぶと効率的です。"
     ),
-    "affiliate-free-vs-paid-study": (
-        "教材の費用判断は、affiliate-free-vs-paid-study で無料範囲と最小2冊セットを24週逆算で確認できます。"
+    "affiliate-beginner-material-set": (
+        "初めて揃える2冊セットは、affiliate-beginner-material-set で予算と章立てのつながりを比較してから固定すると無駄が減ります。"
     ),
 }
 
