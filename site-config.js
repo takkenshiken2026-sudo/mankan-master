@@ -176,5 +176,13 @@ window.SITE_CONFIG = {
       ],
       "legacyGlossaryCat": "limit"
     }
-  ]
+  ],
+  "paidMockExam": {
+    "url": "https://note.com/shikaku_master/n/naeb3cf0dec67",
+    "modeTitle": "予想模試（PDF・3回分）",
+    "modePurpose": "本番と同じ50問・120分で実力確認したい",
+    "priceLabel": "¥590",
+    "scoreMeta": "50問×3",
+    "scoreLead": "本番同形式の50問"
+  }
 };
