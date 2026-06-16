@@ -1,0 +1,56 @@
+slug: affiliate-cram-school
+theme_key: cram-school
+search_intent: マンション管理士向け通学講座を比較して独学に組み込みたい
+title: マンション管理士試験の通学講座比較【TAC vs LEC】独学との併用【2026年度版】
+genre: 独学対策
+layout: product-comparison
+asp_primary: a8
+comparison_kind: courses
+comparison_title: おすすめ通学講座2選（比較）
+price_disclaimer: 料金·割引·開講日程は執筆時点（2026-06-16）の各公式ページ参考です。申込前に必ず最新条件を確認してください。
+products:
+  - rank: 1
+    offer_type: course
+    name: 資格の学校TAC マンション管理士本科生（教室講座）
+    provider: 資格の学校TAC
+    plan_name: 教室講座 / ビデオブース講座
+    price_yen: 132000
+    billing_type: lump
+    price_note: 税込·入会金10,000円別·割引条件あり
+    duration: 本科生カリキュラム（2〜7月開講·公式参考）
+    lecture_hours: 全国TAC校舎·対面授業
+    support: 対面質問·自習室·欠席時Web視聴（コースによる）
+    image_file: mankan-tac-classroom2026.webp
+    for_who: 対面質問と全国校舎でペースを守りたい社会人
+    highlights:
+      - 教室講座とWeb通信が同額で切替しやすい
+      - TACオリジナルテキスト同梱
+      - 欠席時Web再視聴·校舎振替（コースによる）
+  - rank: 2
+    offer_type: course
+    name: LEC東京リーガルマインド マンション管理士合格コース（通学）
+    provider: LEC東京リーガルマインド
+    plan_name: 通学Webフォロー（2026合格目標）
+    price_yen: 115500
+    billing_type: lump
+    price_note: 税込·DVDフォロー137,500円·割引条件あり
+    duration: 通学全48回（公式参考）
+    lecture_hours: 提携校通学+Webフォロー
+    support: 通学授業·質問（コースによる）
+    image_file: mankan-lec-classroom2026.webp
+    for_who: 提携校が通えるエリアで全48回表を守りたい人
+    highlights:
+      - 通学Webフォロー115,500円（税込）から
+      - LECオリジナルテキスト同梱
+      - W合格コース·受験者割引あり
+related_links:
+  - self-study-without-school:学校なし独学
+  - affiliate-correspondence-course:通信講座比較
+  - affiliate-online-course-compare:オンライン講座比較
+  - affiliate-textbooks-recommend:おすすめテキスト3選
+  - study-plan-working:社会人の学習計画
+operator_note: |
+  2026-06-16 v2公開。TAC13万2000円+入会金1万円は tac-school.co.jp/kouza_m-kanri で確認。
+  LEC通学11万5500円は online.lec-jp.com GOODS_NO=100260227 で確認。related_linksに公式直リンク。
+  講座LP画像は mankan-tac-classroom2026.webp / mankan-lec-classroom2026.webp（表紙proxy）。
+  A8 URL確定後: products[].a8_url を追記し related_links の公式URLを差し替え可。

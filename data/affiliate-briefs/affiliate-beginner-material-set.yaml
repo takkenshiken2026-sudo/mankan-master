@@ -1,0 +1,82 @@
+slug: affiliate-beginner-material-set
+theme_key: beginner-material-set
+search_intent: マンション管理士初学者が最初に揃えるテキスト+問題集セットを比較したい
+title: マンション管理士試験の初学者向け教材セット3選【2026年度版·テキスト+問題集】
+genre: 学習計画
+layout: product-comparison
+asp_primary: amazon
+comparison_kind: books
+comparison_title: 初学者向け教材セット3選（比較）
+price_disclaimer: 価格·在庫は執筆時点（2026-06-12）のAmazon税込参考です。購入前に必ず販売ページで最新版·税込価格を確認してください。
+products:
+  - rank: 1
+    offer_type: book
+    name: TAC入門2冊セット（はじめの一歩+項目別過去8年）
+    publisher: TAC出版
+    edition: 2026年度版
+    price_yen: 4840
+    price_label: 約4,840円（2冊合計·税込参考）
+    price_note: テキスト1,980円+問題集2,860円·送料別
+    pages: 1172
+    format: B5判×2冊
+    asin: "4300120218"
+    image_file: mankan-book-4300120218.webp
+    amazon_url: https://www.amazon.co.jp/dp/4300120218/ref=nosim?tag=ue083093-22
+    workbook_name: 2026年度版 マンション管理士 項目別過去8年問題集
+    workbook_amazon_url: https://www.amazon.co.jp/dp/4300120331/ref=nosim?tag=ue083093-22
+    for_who: 初受験·予算を抑えて最小2冊から始めたい人
+    highlights:
+      - はじめの一歩で7分野の輪郭を短時間で把握
+      - TAC系列で章と過去8年項目がつながる
+      - 3セットの中で合計予算が最も抑えやすい
+  - rank: 2
+    offer_type: book
+    name: Wマスター2冊セット（テキスト+過去問集）
+    publisher: 早稲田経営出版
+    edition: 2026年度版
+    price_yen: 8030
+    price_label: 約8,030円（2冊合計·税込参考）
+    price_note: テキスト3,630円+過去問4,400円·送料別
+    pages: 1748
+    format: B5判×2冊
+    asin: 484715343X
+    image_file: mankan-book-484715343x.webp
+    amazon_url: https://www.amazon.co.jp/dp/484715343X/ref=nosim?tag=ue083093-22
+    workbook_name: 2026年度版 マンション管理士・管理業務主任者 Wマスター過去問集
+    workbook_amazon_url: https://www.amazon.co.jp/dp/4847153448/ref=nosim?tag=ue083093-22
+    for_who: W受験で解説厚めの本格2冊を縦串で揃えたい人
+    highlights:
+      - マン管·管業のW受験を1セットで設計しやすい
+      - Wマスターテキストと過去問の章立て相性がよい
+      - 社会人独学のメイン教材候補
+  - rank: 3
+    offer_type: book
+    name: LEC出る順2冊セット（合格テキスト+分野別過去問題集）
+    publisher: LEC
+    edition: 2026年版
+    price_yen: 7150
+    price_label: 約7,150円（2冊合計·税込参考）
+    price_note: テキスト4,400円+過去問2,750円·送料別
+    pages: 2044
+    format: B5判×2冊
+    asin: "4844974297"
+    image_file: mankan-book-4844974297.webp
+    amazon_url: https://www.amazon.co.jp/dp/4844974297/ref=nosim?tag=ue083093-22
+    workbook_name: 2026年版 出る順 マンション管理士 分野別過去問題集
+    workbook_amazon_url: https://www.amazon.co.jp/dp/4844974300/ref=nosim?tag=ue083093-22
+    for_who: 出る順系列で論点整理から演習へ進みたい人
+    highlights:
+      - 出る順テキストと分野別過去問の縦串が明確
+      - 頻出論点の整理に向くページ配分
+      - TAC·Wマスターとの比較選択肢
+related_links:
+  - first-time-exam-guide:初受験ガイド
+  - affiliate-textbooks-recommend:おすすめテキスト3選
+  - affiliate-problem-books:おすすめ問題集3選
+  - affiliate-free-vs-paid-study:無料と有料教材の使い分け
+  - study-plan-beginner:初学者向け学習計画
+  - self-study-start:独学の始め方
+operator_note: |
+  2026-06-12 v2本文完了·published。
+  Amazon tag=ue083093-22。6 ASIN URL確定。
+  合計価格: 4,840 / 8,030 / 7,150円（税込参考）。

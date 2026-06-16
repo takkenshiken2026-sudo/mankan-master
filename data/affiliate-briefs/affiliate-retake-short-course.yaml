@@ -1,0 +1,56 @@
+slug: affiliate-retake-short-course
+theme_key: retake-short-course
+search_intent: マンション管理士再受験者が弱点2分野向け短期講座を比較したい
+title: マンション管理士試験の再受験向け短期講座比較【TACオプション vs スタディング】弱点2分野【2026年度版】
+genre: 学習計画
+layout: product-comparison
+asp_primary: a8
+comparison_kind: courses
+comparison_title: 再受験向け短期講座2選（比較）
+price_disclaimer: 料金·受講期間は執筆時点（2026-06-16）の各公式ページ参考です。申込前に必ず最新条件を確認してください。
+products:
+  - rank: 1
+    offer_type: course
+    name: 資格の学校TAC 法改正まるわかり講座（オプション）
+    provider: 資格の学校TAC
+    plan_name: オプション講座·法改正まるわかり
+    price_yen: 22000
+    billing_type: lump
+    price_note: 税込·本科生セット15,400円·単元別講座あり
+    duration: 150分×4回（2026合格目標）
+    lecture_hours: コンパクト4回·改正前後比較
+    support: TAC WEB SCHOOL·レジュメPDF·予想問題
+    image_file: mankan-tac-course2026.webp
+    for_who: 改定点を短時間で更新したい再受験者
+    highlights:
+      - 2026年4月施行改正を4回で整理
+      - 再受験·独学経験者向けに設計
+      - 本科生とセットで割引適用可
+  - rank: 2
+    offer_type: course
+    name: スタディング マンション管理士合格コース［2026年度合格目標］
+    provider: 株式会社KIYOラーニング（スタディング）
+    plan_name: マン管単科（弱点分野のみ視聴）
+    price_yen: 35000
+    billing_type: lump
+    price_note: 税込·受講期限2027/1/31
+    duration: 買い切り·弱点章のみ反復視聴可
+    lecture_hours: 基本講座合計約27時間
+    support: スマート問題集·学習Q&A（オプション）
+    image_file: mankan-studying-course2026.webp
+    for_who: 弱点2分野を動画+演習で底上げしたい再受験者
+    highlights:
+      - 48％未満分野の動画だけを集中的に視聴可能
+      - スマホ完結·買い切り35,000円
+      - 演習（スマート問題集）もコース内で確保
+related_links:
+  - retake-strategy:再受験の戦略
+  - fail-retry-plan:不合格後の立て直し
+  - affiliate-online-course-compare:オンライン講座比較
+  - affiliate-correspondence-course:通信講座比較
+  - affiliate-problem-books:おすすめ問題集3選
+operator_note: |
+  2026-06-16 v2公開。TAC2万2000円·本科生セット1万5400円は tac-school.co.jp/kouza_m-kanri/m-kanri_crs_kubunsyoyu で確認。
+  スタディング3万5000円は studying.jp/mankan で確認。related_linksに公式直リンク。
+  講座画像は mankan-tac-course2026.webp / mankan-studying-course2026.webp（表紙proxy）。
+  A8 URL確定後: products[].a8_url を追記し related_links の公式URLを差し替え可。

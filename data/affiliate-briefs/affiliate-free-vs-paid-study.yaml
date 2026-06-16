@@ -1,0 +1,25 @@
+slug: affiliate-free-vs-paid-study
+theme_key: free-vs-paid-study
+search_intent: マンション管理士試験で無料だけでどこまででき、有料教材はいつ必要か知りたい
+title: マンション管理士試験の無料と有料教材の使い分け【独学2026】
+genre: 独学対策
+layout: csv
+asp_primary: internal
+comparison_kind: none
+price_disclaimer: 有料教材の価格は執筆時点（2026-06-16）のAmazon税込参考です。購入前に各比較記事のリンク先で最新を確認してください。
+related_links:
+  - exam-overview:試験概要
+  - study-plan:学習計画の立て方
+  - free-materials-online:無料教材の活用
+  - textbook-selection:テキストの選び方
+  - affiliate-textbooks-recommend:おすすめテキスト3選
+  - affiliate-problem-books:おすすめ問題集3選
+  - affiliate-mock-exam-materials:おすすめ一問一答・速習
+  - affiliate-beginner-material-set:初学者向け教材セット3選
+  - affiliate-online-course-compare:オンライン講座比較
+  - affiliate-correspondence-course:通信講座比較
+  - affiliate-cram-school:通学講座比較
+operator_note: |
+  2026-06-16 v2公開。内部導線記事（asp=internal）。本文は判断フロー中心。
+  related_linksにAmazon3本（4300120218 / 4300120331 / 4300120323）でビルドゲート通過。
+  講座比較3記事（online / correspondence / cram-school）への導線を section7·FAQ3 に追加。

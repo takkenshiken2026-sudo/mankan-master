@@ -1,0 +1,56 @@
+slug: affiliate-correspondence-course
+theme_key: correspondence-course
+search_intent: マンション管理士向け通信講座を比較して独学に組み込みたい
+title: マンション管理士試験の通信講座比較【TAC vs LEC】独学との併用【2026年度版】
+genre: 独学対策
+layout: product-comparison
+asp_primary: a8
+comparison_kind: courses
+comparison_title: おすすめ通信講座2選（比較）
+price_disclaimer: 料金·割引·受講期間は執筆時点（2026-06-16）の各公式ページ参考です。申込前に必ず最新条件を確認してください。
+products:
+  - rank: 1
+    offer_type: course
+    name: 資格の学校TAC マンション管理士本科生
+    provider: 資格の学校TAC
+    plan_name: Web通信講座 / オンラインライブ通信講座
+    price_yen: 132000
+    billing_type: lump
+    price_note: 税込·入会金10,000円別·割引条件あり
+    duration: 本科生カリキュラム（随時入学可·公式参考）
+    lecture_hours: Web通信·オンラインライブ選択
+    support: メール質問·添削·自習室（コースによる）
+    image_file: mankan-tac-course2026.webp
+    for_who: 添削·ライブで週次ペースを外したくない社会人
+    highlights:
+      - TACオリジナルテキスト同梱
+      - Web通信とオンラインライブから選択
+      - W合格本科生·宅建経験者割引など条件別料金
+  - rank: 2
+    offer_type: course
+    name: LEC東京リーガルマインド マンション管理士合格コース
+    provider: LEC東京リーガルマインド
+    plan_name: 通信Web（2026合格目標）
+    price_yen: 99000
+    billing_type: lump
+    price_note: 税込·DVD版121,000円·割引条件あり
+    duration: 通信全47回（公式参考）
+    lecture_hours: Web動画＋スマホ＋音声DL
+    support: 添削·質問（コースによる）
+    image_file: mankan-lec-course2026.webp
+    for_who: 通信Webで全47回表を守りつつコストを抑えたい人
+    highlights:
+      - 通信Web99,000円（税込）から
+      - LECオリジナルテキスト同梱
+      - W合格コース·受験者割引あり
+related_links:
+  - correspondence-course-guide:通信講座と独学
+  - affiliate-textbooks-recommend:おすすめテキスト3選
+  - affiliate-problem-books:おすすめ問題集3選
+  - affiliate-online-course-compare:オンライン講座比較
+  - affiliate-free-vs-paid-study:無料と有料教材の使い分け
+operator_note: |
+  2026-06-16 v2公開。TAC13万2000円+入会金1万円は tac-school.co.jp/kouza_m-kanri で確認。
+  LEC9万9000円は lec-jp.com/mankan/kouza で確認。related_linksに公式直リンク。
+  講座LP画像は mankan-tac-course2026.webp / mankan-lec-course2026.webp（表紙proxy）。
+  A8 URL確定後: products[].a8_url を追記し related_links の公式URLを差し替え可。

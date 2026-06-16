@@ -37,7 +37,6 @@ from tools.correct_answer_format import is_valid_correct
 from tools.affiliate_links import (  # noqa: E402
     affiliate_external_links_in_row,
     is_affiliate_article,
-    is_internal_affiliate_article,
 )
 from tools.related_links import parse_related_link_token
 from tools.site_config import category_to_field_map, extended_correct_answers, guide_genre_labels
@@ -470,8 +469,6 @@ class Validator:
                 ext_links = affiliate_external_links_in_row(row)
                 if ext_links:
                     affiliate_ready_count += 1
-                elif is_internal_affiliate_article(row):
-                    pass
                 elif self.norm(row.get("content_status")) == "published":
                     self.warn(
                         path,

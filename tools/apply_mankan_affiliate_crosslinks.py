@@ -16,7 +16,7 @@ PUBLISHED_AFFILIATE = (
     "affiliate-textbooks-recommend",
     "affiliate-problem-books",
     "affiliate-mock-exam-materials",
-    "affiliate-free-vs-paid-study",
+    "affiliate-beginner-material-set",
 )
 
 # 非アフィリ3 + アフィリ3 + 演習 + ASP（hub3本のみ）
@@ -28,7 +28,6 @@ RELATED_LINKS: dict[str, str] = {
             "self-study-start:独学の始め方",
             "affiliate-problem-books:おすすめ問題集3選",
             "affiliate-mock-exam-materials:おすすめ一問一答・速習",
-            "affiliate-free-vs-paid-study:無料と有料教材の使い分け",
             "https://www.amazon.co.jp/dp/4300120218/ref=nosim?tag=ue083093-22",
             "https://www.amazon.co.jp/dp/484715343X/ref=nosim?tag=ue083093-22",
             "https://www.amazon.co.jp/dp/4844974297/ref=nosim?tag=ue083093-22",
@@ -41,7 +40,6 @@ RELATED_LINKS: dict[str, str] = {
             "past-questions-by-field:分野別過去問",
             "affiliate-textbooks-recommend:おすすめテキスト3選",
             "affiliate-mock-exam-materials:おすすめ一問一答・速習",
-            "affiliate-free-vs-paid-study:無料と有料教材の使い分け",
             "https://www.amazon.co.jp/dp/4300120331/ref=nosim?tag=ue083093-22",
             "https://www.amazon.co.jp/dp/4844974300/ref=nosim?tag=ue083093-22",
             "https://www.amazon.co.jp/dp/4847153448/ref=nosim?tag=ue083093-22",
@@ -54,21 +52,21 @@ RELATED_LINKS: dict[str, str] = {
             "final-week-prep:直前1週間の対策",
             "affiliate-textbooks-recommend:おすすめテキスト3選",
             "affiliate-problem-books:おすすめ問題集3選",
-            "affiliate-free-vs-paid-study:無料と有料教材の使い分け",
             "https://www.amazon.co.jp/dp/4300120323/ref=nosim?tag=ue083093-22",
             "https://www.amazon.co.jp/dp/430012034X/ref=nosim?tag=ue083093-22",
             "https://www.amazon.co.jp/dp/4300120293/ref=nosim?tag=ue083093-22",
         ]
     ),
-    "affiliate-free-vs-paid-study": ";".join(
+    "affiliate-beginner-material-set": ";".join(
         [
-            "free-materials-online:無料教材の活用",
+            "exam-overview:試験概要",
             "study-plan:学習計画の立て方",
-            "self-study-start:独学の始め方",
+            "textbook-selection:テキストの選び方",
             "affiliate-textbooks-recommend:おすすめテキスト3選",
             "affiliate-problem-books:おすすめ問題集3選",
-            "affiliate-mock-exam-materials:おすすめ一問一答・速習",
-            "past-question-strategy:過去問の使い方",
+            "https://www.amazon.co.jp/dp/4300120218/ref=nosim?tag=ue083093-22",
+            "https://www.amazon.co.jp/dp/4300120072/ref=nosim?tag=ue083093-22",
+            "https://www.amazon.co.jp/dp/4300120080/ref=nosim?tag=ue083093-22",
         ]
     ),
 }
@@ -99,7 +97,6 @@ BODY_PATCHES: dict[str, dict[str, str]] = {
             "2. 要項の受験区分（マン管単独かW受験か）と目次の章立て"
             "3. 6/14開始なら残り25週・週10時間で第1周が終わるか"
             "たとえば6/14（日）に1冊決定→7月末まで第1周→8月から[おすすめ問題集3選](../affiliate-problem-books/)で演習中心、という順が定番です。"
-            "教材予算の全体像は、[無料と有料教材の使い分け](../affiliate-free-vs-paid-study/)で無料範囲と最小2冊セットを先に整理すると迷いが減ります。"
             "[初学者向け学習計画](../study-plan-beginner/)で月次計画を組み、速習·一問一答が必要になった段階で"
             "[おすすめ一問一答・速習](../affiliate-mock-exam-materials/)を検討してください。"
             "価格は変動するため、申込・購入の直前に必ず販売ページで再確認してください。"
@@ -124,7 +121,6 @@ BODY_PATCHES: dict[str, dict[str, str]] = {
             "購入前に次を確認してください。1. Amazon販売ページで税込価格·在庫·2026年度版表記"
             "2. メインテキストと同系列か（TAC·LEC·早稲田）"
             "3. 9月開始なら11/29までに通し50問を最低4回入れられるか"
-            "購入順序の前後関係は、[無料と有料教材の使い分け](../affiliate-free-vs-paid-study/)で段階投入の具体例を確認してください。"
             "[初学者向け学習計画](../study-plan-beginner/)で週10時間×25週を先にカレンダー固定し、問題集は「9月1冊購入・11月追加なし」を原則にすると教材コストを抑えられます。"
             "価格は変動するため、購入の直前に必ず販売ページで再確認してください。"
         ),
@@ -160,31 +156,6 @@ BODY_PATCHES: dict[str, dict[str, str]] = {
             "購入前チェック：Amazonで税込価格·2026年度版表記·受験区分。"
             "11月以降の新規教材追加は抑え、解き直しに週10時間の50％以上を回す判断が定番です。"
             "価格は変動するため、購入直前に必ず販売ページで再確認してください。"
-        ),
-    },
-    "affiliate-free-vs-paid-study": {
-        "section_6_body": (
-            "有料教材の優先順位は固定です。具体例として、9月第1週にテキスト1冊、"
-            "10月第1週に同系統の問題集1冊、11月以降に一問一答（任意）——"
-            "という順が24週逆算と整合します。"
-            "| 順位 | 教材 || --- | --- || 1 | 2026年度版テキスト1冊 || 2 | 同系統問題集1冊 || 3 | 一問一答（任意） |"
-            "2冊目を検討するのは、分野別正答率50％未満が2つ以上残る場合か、"
-            "通し模試で15問以上時間切れが続く場合です。"
-            "テキスト比較は[おすすめテキスト3選](../affiliate-textbooks-recommend/)、"
-            "問題集は[おすすめ問題集3選](../affiliate-problem-books/)、"
-            "一問一答は[おすすめ一問一答・速習](../affiliate-mock-exam-materials/)へ。"
-        ),
-        "section_7_body": (
-            "無料と有料の境界が決まったら、次の記事へ進んでください。"
-            "・無料の手順詳細 → [無料教材の活用](../free-materials-online/)"
-            "・月次計画 → [学習計画の立て方](../study-plan/)（11/29から逆算）"
-            "・テキスト1冊選び → [テキストの選び方](../textbook-selection/)と[おすすめテキスト3選](../affiliate-textbooks-recommend/)"
-            "・問題集1冊選び → [おすすめ問題集3選](../affiliate-problem-books/)"
-            "・一問一答（任意）→ [おすすめ一問一答・速習](../affiliate-mock-exam-materials/)"
-            "・独学の始め方 → [独学の始め方](../self-study-start/)"
-            "11月第1週以降は新規購入より解き直し90％を優先し、"
-            "受験区分・試験日はマン管センター要項で必ず照合してください。"
-            "本記事は収益リンクを含みません（asp=internal）。"
         ),
     },
 }
