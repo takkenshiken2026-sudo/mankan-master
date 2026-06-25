@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mankan-master.jp/</loc>
-    <lastmod>2026-06-18</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -87,7 +87,7 @@
   </url>
   <url>
     <loc>https://mankan-master.jp/articles/exam-difficulty/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -123,6 +123,11 @@
   <url>
     <loc>https://mankan-master.jp/articles/exam-scope-overview/</loc>
     <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mankan-master.jp/articles/exam-venue-and-region/</loc>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
@@ -177,7 +182,7 @@
   </url>
   <url>
     <loc>https://mankan-master.jp/articles/pass-rate/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-25</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
