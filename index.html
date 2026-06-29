@@ -333,7 +333,8 @@ h2.section-label .tip-icon{width:13px;height:13px;font-size:9px}
 .ichi-config{padding:4px 0 20px;margin-bottom:8px}
 .ichi-config-lead{font-size:var(--fs-sub);color:var(--text2);line-height:1.65;margin-bottom:14px}
 .ichi-config #ichi-field-chips{margin-bottom:16px}
-.ichi-start-btn{width:100%;padding:13px;font-size:15px;font-weight:700}
+.ichi-config .count-btns{margin-bottom:16px}
+.ichi-start-btn{width:100%;padding:13px;font-size:15px;font-weight:700;margin-top:4px}
 .ichi-play-wrap{display:block}
 .ichi-prog-wrap{margin-bottom:20px}
 .ichi-prog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:8px;flex-wrap:wrap}
@@ -608,7 +609,12 @@ details.rich-detail summary{display:none}
 .score-ring-pct{font-size:var(--fs-score-hero);font-weight:700;font-family:var(--mono);letter-spacing:-1px;line-height:1}
 .score-ring-sub{font-size:var(--fs-caption);color:var(--text3);margin-top:2px;letter-spacing:.04em}
 .score-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}
+.score-detail-grid:empty{display:none}
 .score-detail-grid--single{grid-template-columns:1fr;max-width:280px}
+.score-goal{font-size:var(--fs-sub);color:var(--text2);text-align:center;padding:10px 14px;background:var(--bg3);border-radius:var(--r);border:1px solid var(--border);margin-bottom:16px;line-height:1.5}
+.score-goal strong{font-family:var(--mono);font-size:18px;color:var(--text);margin:0 4px;font-weight:700}
+.score-goal--done{color:var(--green);font-weight:600;background:var(--grn-s);border-color:var(--grn-b)}
+.config-start-btn{width:100%;padding:13px;font-size:15px;font-weight:700;margin-top:16px;margin-bottom:8px}
 .score-detail-card{background:var(--bg3);border-radius:var(--r);padding:12px 14px;border:1px solid var(--border)}
 .score-detail-label{font-size:var(--fs-caption);color:var(--text3);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
 .score-detail-val{font-size:var(--fs-title);font-weight:700;font-family:var(--mono);letter-spacing:-0.5px;line-height:1.1}
@@ -891,12 +897,14 @@ details.rich-detail summary{display:none}
   .dash-grid{grid-template-columns:1fr}
   .mode-grid{grid-template-columns:1fr 1fr;gap:8px}
   .mode-card-featured{grid-column:1 / -1}
-  .mode-card-v2{padding:13px 14px;gap:10px;min-height:86px}
-  .mode-num-v2{width:18px}
+  .mode-card-v2{padding:11px 13px;gap:10px;min-height:72px}
+  .mode-num-v2{width:18px;font-size:11px}
   .mode-purpose-v2,.mode-title-v2{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;text-overflow:ellipsis}
-  .mode-purpose-v2{font-size:12px;margin-bottom:2px;line-height:1.4}
-  .mode-title-v2{font-size:17px;line-height:1.35}
-  .mode-arrow-v2{font-size:15px}
+  .mode-purpose-v2{font-size:11px;margin-bottom:2px;line-height:1.4}
+  .mode-title-v2{font-size:15px;line-height:1.35}
+  .mode-arrow-v2{font-size:14px}
+  #page-quiz-start .page-title{font-size:16px}
+  #page-quiz-start .page-sub{font-size:12px}
   .count-btn{min-height:44px;height:auto;padding:10px 14px;font-size:13px;line-height:1.3}
   .count-btns--stack-mobile{flex-direction:column;align-items:stretch;gap:6px}
   .count-btns--stack-mobile .count-btn{width:100%;min-width:0}
@@ -1578,6 +1586,14 @@ body.is-solving .site-footer{display:none!important}
       </nav>
       <div id="ichi-config" class="ichi-config">
         <p class="ichi-config-lead">分野を選んで「開始」してください。記述が正しいときは○、誤りのときは×で答えます。</p>
+        <h2 class="section-label" style="margin-bottom:12px">出題数</h2>
+        <div class="count-btns">
+          <button type="button" class="count-btn" onclick="selIchiCount(5)" id="icb5">5問ずつ</button>
+          <button type="button" class="count-btn on" onclick="selIchiCount(10)" id="icb10">10問ずつ</button>
+          <button type="button" class="count-btn" onclick="selIchiCount(30)" id="icb30">30問ずつ</button>
+          <button type="button" class="count-btn" onclick="selIchiCount(0)" id="icb0">エンドレス</button>
+        </div>
+        <h2 class="section-label" style="margin-bottom:8px">分野を選ぶ</h2>
         <div class="field-chips" id="ichi-field-chips"></div>
         <button type="button" class="btn-primary ichi-start-btn" onclick="beginIchimondouSession()">開始</button>
       </div>
@@ -1632,10 +1648,12 @@ body.is-solving .site-footer{display:none!important}
           <span>正答率<strong id="ichi-score-pct">—</strong></span>
         </div>
         <div class="ichi-score-label" id="ichi-score-label"></div>
+        <div id="ichi-score-goal"></div>
         <div class="ichi-score-btns">
-          <button class="btn-primary" onclick="startIchimondou()" style="font-size:15px;padding:13px">もう1回</button>
-          <button class="btn-ghost" onclick="shareIchiResultToX()" style="font-size:15px;padding:13px">Xに投稿する</button>
-          <button class="btn-ghost" onclick="gotoPage('quiz-start')" style="font-size:15px;padding:13px">他の問題を解く</button>
+          <button type="button" class="btn-primary" onclick="continueIchiSession()" style="font-size:15px;padding:13px">続けて解く</button>
+          <button type="button" class="btn-ghost" id="ichi-retry-wrong-btn" onclick="retryWrongIchi()" style="display:none;font-size:15px;padding:13px">間違えた0問を復習</button>
+          <button type="button" class="btn-ghost" onclick="shareIchiResultToX()" style="font-size:15px;padding:13px">Xに投稿する</button>
+          <button type="button" class="btn-ghost" onclick="gotoPage('quiz-start')" style="font-size:15px;padding:13px">他の問題を解く</button>
         </div>
         <div id="ichi-score-paid-mock-wrap" class="score-paid-mock-wrap ichi-score-paid-mock-wrap" hidden></div>
       </div>
@@ -1682,6 +1700,7 @@ body.is-solving .site-footer{display:none!important}
       <div class="score-wrap">
         <div id="score-session-msg" style="margin-bottom:16px"></div>
         <div class="score-ring-wrap" id="score-ring-wrap"></div>
+        <div id="score-goal"></div>
         <div class="score-detail-grid" id="score-details"></div><div id="score-badges-earned" style="margin-bottom:8px"></div>
         <details class="score-q-accordion" id="score-q-accordion">
           <summary class="score-q-accordion-summary">
@@ -1692,9 +1711,10 @@ body.is-solving .site-footer{display:none!important}
           <div class="score-q-list" id="score-q-list"></div>
         </details>
         <div class="score-btns">
-          <button class="btn-ghost" onclick="shareSessionResultToX()">Xに投稿する</button>
-          <button class="btn-ghost"   onclick="gotoPage('quiz-start')">他の問題を解く</button>
-          <button class="btn-primary" onclick="beginQuiz()">もう1セット</button>
+          <button type="button" class="btn-primary" onclick="continueSession()">続けて解く</button>
+          <button type="button" class="btn-ghost" id="score-retry-wrong-btn" onclick="retryWrongQuestions()" style="display:none">間違えた0問を復習</button>
+          <button type="button" class="btn-ghost" onclick="shareSessionResultToX()">Xに投稿する</button>
+          <button type="button" class="btn-ghost" onclick="gotoPage('quiz-start')">他の問題を解く</button>
         </div>
         <div id="score-paid-mock-wrap" class="score-paid-mock-wrap" hidden></div>
       </div>
@@ -1788,10 +1808,7 @@ body.is-solving .site-footer{display:none!important}
       <div class="page-sub">年度・分野を選んで学習スタート</div>
 
       <div class="orig-bottom-bar" style="margin-top:0;margin-bottom:16px;padding-top:0;border-top:none;border-bottom:1px solid var(--border);padding-bottom:16px">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
-          <h2 class="section-label" style="margin-bottom:0">出題数</h2>
-          <button class="btn-primary" onclick="beginQuiz()">スタート</button>
-        </div>
+        <h2 class="section-label" style="margin-bottom:12px">出題数</h2>
         <div class="count-btns">
           <button class="count-btn"    onclick="selCount(5)"  id="cb5">5問</button>
           <button class="count-btn on" onclick="selCount(10)" id="cb10">10問</button>
@@ -1816,6 +1833,8 @@ body.is-solving .site-footer{display:none!important}
         <button class="count-btn on" id="order-rnd" onclick="selOrder('rnd')">ランダムに解く</button>
       </div>
 
+      <button type="button" class="btn-primary config-start-btn" onclick="beginQuiz()">スタート</button>
+
       <div style="font-size:12px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;margin-top:16px;line-height:1.65">
         ※ 掲載問題は、公式過去問そのものではなく、著作権上の配慮と最新法令への対応のため問題文・選択肢を編集した「過去問形式」の演習問題です。試験本番の原文・合格基準・試験日程などは<a href="https://www.mankan.org/" target="_blank" rel="noopener noreferrer">公益財団法人マンション管理センター（公式）</a>等の公式情報を、法令・通達の原文は<a href="https://www.mlit.go.jp/" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:underline">国土交通省</a>等のウェブサイトをご確認ください。
       </div>
@@ -1834,10 +1853,7 @@ body.is-solving .site-footer{display:none!important}
       <div class="page-sub">分野を選び、過去問と同じ形式で演習できます。出題順は毎回ランダムです。</div>
 
       <div class="orig-bottom-bar" style="margin-top:0;margin-bottom:16px;padding-top:0;border-top:none;border-bottom:1px solid var(--border);padding-bottom:16px">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
-          <h2 class="section-label" style="margin-bottom:0">出題数</h2>
-          <button class="btn-primary" onclick="beginOrigQuiz()">スタート</button>
-        </div>
+        <h2 class="section-label" style="margin-bottom:12px">出題数</h2>
         <div class="count-btns">
           <button class="count-btn"    onclick="selOrigCount(5)"  id="ocb5">5問</button>
           <button class="count-btn on" onclick="selOrigCount(10)" id="ocb10">10問</button>
@@ -1849,6 +1865,8 @@ body.is-solving .site-footer{display:none!important}
 
       <h2 class="section-label">分野を選ぶ</h2>
       <div class="field-chips" id="orig-field-chips"></div>
+
+      <button type="button" class="btn-primary config-start-btn" onclick="beginOrigQuiz()">スタート</button>
 
     </div>
 
@@ -3223,8 +3241,20 @@ let ichiState = {
   attempts: 0,
   answered: false,
   fieldFilter: null,
+  count: 10,
+  lastFieldFilter: null,
+  lastCount: 10,
+  sessionResults: [],
   active: false
 };
+
+function selIchiCount(n) {
+  ichiState.count = n;
+  [5, 10, 30, 0].forEach(v => {
+    const el = document.getElementById('icb' + v);
+    if (el) el.classList.toggle('on', v === n);
+  });
+}
 
 function selectIchiField(el) {
   el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
@@ -3508,7 +3538,13 @@ function ensureIchiQuestionAt(idx) {
 
 function updateIchiSessionHud() {
   const n = ichiState.idx + 1;
-  document.getElementById('ichi-prog-label').textContent = '第 ' + n + ' 問';
+  const limit = ichiState.count > 0 ? ichiState.count : null;
+  const labelEl = document.getElementById('ichi-prog-label');
+  if (labelEl) {
+    labelEl.textContent = limit
+      ? ('第 ' + n + ' 問 / ' + limit)
+      : ('第 ' + n + ' 問');
+  }
   const att = ichiState.attempts;
   const el = document.getElementById('ichi-rate');
   if (el) {
@@ -3519,8 +3555,12 @@ function updateIchiSessionHud() {
   const poolLen = Math.max(ichiState.sourcePool.length, 1);
   const fill = document.getElementById('ichi-prog-fill');
   if (fill) {
-    const cycle = ((ichiState.idx % poolLen) + poolLen) % poolLen;
-    fill.style.width = (cycle / poolLen * 100) + '%';
+    if (limit) {
+      fill.style.width = (Math.min(ichiState.attempts, limit) / limit * 100) + '%';
+    } else {
+      const cycle = ((ichiState.idx % poolLen) + poolLen) % poolLen;
+      fill.style.width = (cycle / poolLen * 100) + '%';
+    }
   }
 }
 
@@ -3533,13 +3573,17 @@ function beginIchimondouSession() {
     alert('この分野に問題データがありません。別の分野を選んでください。');
     return;
   }
+  syncMissionPopupBaseline();
   ichiState.sourcePool = pool;
   ichiState.questions = [];
   ichiState.idx = 0;
   ichiState.score = 0;
   ichiState.attempts = 0;
+  ichiState.sessionResults = [];
   ichiState.answered = false;
   ichiState.fieldFilter = fieldFilter;
+  ichiState.lastFieldFilter = fieldFilter;
+  ichiState.lastCount = ichiState.count;
   ichiState.active = true;
   syncIchiPageVisibility();
   document.body.classList.add('is-solving');
@@ -3553,9 +3597,56 @@ function startIchimondou() {
   ichiState.idx = 0;
   ichiState.score = 0;
   ichiState.attempts = 0;
+  ichiState.sessionResults = [];
   ichiState.answered = false;
   gotoPage('ichimondou');
   syncIchiPageVisibility();
+}
+
+function continueIchiSession() {
+  const fieldFilter = ichiState.lastFieldFilter;
+  const count = ichiState.lastCount != null ? ichiState.lastCount : ichiState.count;
+  const pool = buildIchiSourcePool(fieldFilter);
+  if (!pool.length) {
+    alert('この分野に問題データがありません。設定画面から分野を選び直してください。');
+    startIchimondou();
+    return;
+  }
+  syncMissionPopupBaseline();
+  ichiState.sourcePool = pool;
+  ichiState.questions = [];
+  ichiState.idx = 0;
+  ichiState.score = 0;
+  ichiState.attempts = 0;
+  ichiState.sessionResults = [];
+  ichiState.answered = false;
+  ichiState.fieldFilter = fieldFilter;
+  ichiState.count = count;
+  ichiState.active = true;
+  gotoPage('ichimondou');
+  syncIchiPageVisibility();
+  document.body.classList.add('is-solving');
+  showIchiQuestion();
+}
+
+function retryWrongIchi() {
+  const wrong = (ichiState.sessionResults || []).filter(r => !r.correct);
+  if (!wrong.length) return;
+  syncMissionPopupBaseline();
+  ichiState.sourcePool = wrong.map(r => r.q);
+  ichiState.questions = wrong.map(r => r.q);
+  ichiState.idx = 0;
+  ichiState.score = 0;
+  ichiState.attempts = 0;
+  ichiState.sessionResults = [];
+  ichiState.answered = false;
+  ichiState.count = wrong.length;
+  ichiState.lastCount = wrong.length;
+  ichiState.active = true;
+  gotoPage('ichimondou');
+  syncIchiPageVisibility();
+  document.body.classList.add('is-solving');
+  showIchiQuestion();
 }
 
 function formatIchiStatementLead(statement) {
@@ -3727,6 +3818,8 @@ function answerIchi(userAnswer) {
   const correct = userAnswer === q.correctAnswer;
   ichiState.attempts++;
   if (correct) ichiState.score++;
+  ichiState.sessionResults = ichiState.sessionResults || [];
+  ichiState.sessionResults.push({ q, correct, userAnswer });
   const baseQ = getBaseQuestionById(q.id);
   const elapsed = ichiState.qStarted ? (Date.now() - ichiState.qStarted) / 1000 : 0;
   const pickedIdx = baseQ
@@ -3784,6 +3877,10 @@ function answerIchi(userAnswer) {
 }
 
 function nextIchi() {
+  if (ichiState.count > 0 && ichiState.attempts >= ichiState.count) {
+    showIchiScore();
+    return;
+  }
   ichiState.idx++;
   window.scrollTo({ top: 0, behavior: 'instant' });
   showIchiQuestion();
@@ -3827,7 +3924,20 @@ function showIchiScore() {
   const ratio = att > 0 ? s / att : 0;
   const li = Math.min(Math.floor(ratio * (labels.length - 0.001)), labels.length - 1);
   document.getElementById('ichi-score-label').textContent = labels[Math.max(0, li)];
+  renderScoreGoal('ichi-score-goal');
+  updateIchiRetryWrongBtn();
   renderScorePaidMockPromo({ wrapId: 'ichi-score-paid-mock-wrap', variant: 'ichi' });
+}
+function updateIchiRetryWrongBtn() {
+  const wrong = (ichiState.sessionResults || []).filter(r => !r.correct);
+  const btn = document.getElementById('ichi-retry-wrong-btn');
+  if (!btn) return;
+  if (wrong.length) {
+    btn.textContent = '間違えた' + wrong.length + '問を復習';
+    btn.style.display = '';
+  } else {
+    btn.style.display = 'none';
+  }
 }
 function shareIchiResultToX(){
   const s = ichiState.score;
@@ -5716,6 +5826,53 @@ function interruptQuiz(){
   showScore();
 }
 
+function renderScoreGoal(elId) {
+  const el = document.getElementById(elId || 'score-goal');
+  if (!el) return;
+  const u = getUserData();
+  if (!u) { el.innerHTML = ''; return; }
+  const solveM = getTodayMissions().find(m => m.type === 'solve');
+  if (!solveM) { el.innerHTML = ''; return; }
+  const p = getMissionProgress(solveM, u);
+  const remain = Math.max(0, p.target - p.cur);
+  if (remain === 0) {
+    el.innerHTML = '<div class="score-goal score-goal--done">今日の目標を達成しました</div>';
+  } else {
+    el.innerHTML = '<div class="score-goal">今日の目標まであと<strong>' + remain + '</strong>問</div>';
+  }
+}
+
+function continueSession() {
+  if (quizState.mode === 'orig') beginOrigQuiz();
+  else beginQuiz();
+}
+
+function retryWrongQuestions() {
+  const wrong = (quizState.sessionResults || []).filter(r => !r.correct);
+  if (!wrong.length) return;
+  syncMissionPopupBaseline();
+  showNextBtn(false, null);
+  quizState.queue = wrong.map(r => r.q);
+  quizState.idx = 0;
+  quizState.sessionResults = [];
+  quizState.scoreReplayMode = false;
+  quizState.fromReview = false;
+  gotoPage('quiz');
+  renderQ();
+}
+
+function updateScoreRetryWrongBtn() {
+  const wrong = (quizState.sessionResults || []).filter(r => !r.correct);
+  const btn = document.getElementById('score-retry-wrong-btn');
+  if (!btn) return;
+  if (wrong.length) {
+    btn.textContent = '間違えた' + wrong.length + '問を復習';
+    btn.style.display = '';
+  } else {
+    btn.style.display = 'none';
+  }
+}
+
 function showScore(){
   const res=quizState.sessionResults, correct=res.filter(r=>r.correct).length;
   const pct=Math.round(correct/res.length*100);
@@ -5756,10 +5913,9 @@ function showScore(){
     </svg>
     <div class="score-ring-label"><div class="score-ring-pct" style="color:${color}">${pct}%</div><div class="score-ring-sub">正答率</div></div></div>`;
   const det=document.getElementById('score-details');
-  if(det){
-    det.className='score-detail-grid score-detail-grid--single';
-    det.innerHTML=`<div class="score-detail-card"><div class="score-detail-label">正解数</div><div class="score-detail-val" style="color:var(--green)">${correct}/${res.length}</div></div>`;
-  }
+  if(det) det.innerHTML='';
+  renderScoreGoal('score-goal');
+  updateScoreRetryWrongBtn();
   // Show newly earned badges
   const earnedEl=document.getElementById('score-badges-earned');
   if(earnedEl&&sessionNewBadges.length){
