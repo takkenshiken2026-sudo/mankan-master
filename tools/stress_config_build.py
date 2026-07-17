@@ -23,6 +23,7 @@ BACKUP_TARGETS = [
     "site-theme.css",
     "CNAME",
     "robots.txt",
+    "ads.txt",
     "sitemap.xml",
 ]
 

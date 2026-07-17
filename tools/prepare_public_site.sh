@@ -38,6 +38,10 @@ do
   fi
   cp "$f" "$OUT/"
 done
+# AdSense ads.txt（site-config の adsenseClientId があるとき apply_site_config が生成）
+if [[ -f "$ROOT/ads.txt" ]]; then
+  cp "$ROOT/ads.txt" "$OUT/"
+fi
 for d in articles q terms; do
   if [[ -d "$ROOT/$d" ]]; then
     cp -R "$ROOT/$d" "$OUT/"
