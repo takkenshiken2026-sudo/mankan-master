@@ -5,6 +5,7 @@ window.SITE_CONFIG = {
   "siteOrigin": "https://mankan-master.jp",
   "contactUrl": "https://forms.gle/XazAUQxqgngAdnwb7",
   "ga4MeasurementId": "G-Q47X42S88D",
+  "adsenseClientId": "ca-pub-7927260139193410",
   "theme": {
     "accent": "#3f4f8a",
     "accentText": "#ffffff",
