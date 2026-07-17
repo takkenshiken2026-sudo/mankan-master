@@ -31,6 +31,8 @@ from tools.index_spa_patch import (  # noqa: E402
     INDEX_NOSCRIPT_MARKER_START,
 )
 from tools.site_config import (  # noqa: E402
+    adsense_client_id,
+    adsense_publisher_id,
     base_path,
     clean_origin,
     exam_name,
@@ -688,6 +690,23 @@ def _ga4_page_issues(root: Path, rel: str, *, require_page_view: bool = False) -
     return issues
 
 
+def _ads_txt(root: Path) -> list[Issue]:
+    """AdSense 利用時はルート ads.txt に正しい pub-ID 行が必須。"""
+    if not adsense_client_id():
+        return []
+    pub = adsense_publisher_id()
+    if not pub:
+        return [Issue(f"adsenseClientId の形式が不正です: {adsense_client_id()!r}")]
+    path = root / "ads.txt"
+    if not path.is_file():
+        return [Issue("ads.txt がありません（AdSense: ルート /ads.txt が必要）")]
+    text = path.read_text(encoding="utf-8")
+    expected = f"google.com, {pub}, DIRECT, f08c47fec0942fa0"
+    if expected not in text:
+        return [Issue(f"ads.txt に必須行がありません: {expected}")]
+    return []
+
+
 def _ga4_tracking(root: Path) -> list[Issue]:
     """docs/integration-checklist — GA4 測定IDとスニペットの横断検証。"""
     issues: list[Issue] = []
@@ -831,6 +850,7 @@ def main() -> int:
     issues.extend(_responsive_css_source(root))
     issues.extend(_viewport_and_static_css(root))
     issues.extend(_ga4_tracking(root))
+    issues.extend(_ads_txt(root))
     issues.extend(_static_page_site_leaks(root))
     issues.extend(_guide_index_picks(root))
 
