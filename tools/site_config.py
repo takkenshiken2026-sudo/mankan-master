@@ -561,6 +561,7 @@ def write_ads_txt() -> None:
             path.unlink()
         return
     # Google AdSense 公式の certification authority ID
+    # ルート https://{domain}/ads.txt で配信されること（AdSense「ads.txt 不明」対策）
     path.write_text(
         f"google.com, {pub}, DIRECT, f08c47fec0942fa0\n",
         encoding="utf-8",

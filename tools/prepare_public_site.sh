@@ -38,8 +38,13 @@ do
   fi
   cp "$f" "$OUT/"
 done
-# AdSense ads.txt（site-config の adsenseClientId があるとき apply_site_config が生成）
-if [[ -f "$ROOT/ads.txt" ]]; then
+# AdSense ads.txt（adsenseClientId があるサイトでは必須。apply_site_config / write_ads_txt が生成）
+if python3 -c "import json; c=json.load(open('site-config.json', encoding='utf-8')); raise SystemExit(0 if str(c.get('adsenseClientId') or '').strip() else 1)"; then
+  if [[ ! -f "$ROOT/ads.txt" ]]; then
+    echo "prepare_public_site.sh: adsenseClientId があるのに ads.txt がありません。" >&2
+    echo "先に python3 tools/apply_site_config.py（または build_all.py）を実行してください。" >&2
+    exit 1
+  fi
   cp "$ROOT/ads.txt" "$OUT/"
 fi
 for d in articles q terms; do
