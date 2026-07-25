@@ -895,6 +895,15 @@ a.site-page-brand:hover {
   line-height: 1.75;
   color: var(--ink);
 }
+.q-exp-hint {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--r);
+  border: 1px solid color-mix(in srgb, var(--accent, #3f4f8a) 20%, var(--border));
+  background: color-mix(in srgb, var(--accent, #3f4f8a) 6%, var(--bg));
+  line-height: 1.75;
+  color: var(--ink);
+}
 /* 各問静的ページ — 類似の問題（関連ページの直上） */
 .q-similar-lead {
   margin: 0 0 14px;

@@ -1064,8 +1064,9 @@ def build_combination_explanation_html(page: dict, row: dict) -> str:
     body = summary or base
     parts.append(f"<p>{text_to_html(body)}</p></section>")
 
+    parts.append(study_hint_section_html(page, row))
     parts.append("</div>")
-    return "\n    ".join(parts)
+    return "\n    ".join(p for p in parts if p)
 
 
 def build_truefalse_group_explanation_html(page: dict, row: dict) -> str:
@@ -1109,8 +1110,9 @@ def build_truefalse_group_explanation_html(page: dict, row: dict) -> str:
         parts.append("</li>")
     parts.append("</ul></section>")
 
+    parts.append(study_hint_section_html(page, row))
     parts.append("</div>")
-    return "\n    ".join(parts)
+    return "\n    ".join(p for p in parts if p)
 
 
 def _wrong_note_dedupe_key(note: str) -> str:
@@ -1303,8 +1305,23 @@ def build_explanation_html(page: dict, row: dict) -> str:
                 f'<ul class="q-exp-choice-list">{lis}</ul></section>'
             )
 
+    parts.append(study_hint_section_html(page, row))
     parts.append("</div>")
-    return "\n    ".join(parts)
+    return "\n    ".join(p for p in parts if p)
+
+
+def study_hint_section_html(page: dict, row: dict) -> str:
+    """「学習のヒント」セクション HTML（実質のあるヒントのみ）。空文字なら省略。"""
+    hint = build_study_hint(page, row)
+    if not hint or _is_template_study_hint(hint):
+        return ""
+    if len(re.sub(r"\s+", "", hint)) < 40:
+        return ""
+    return (
+        '<section class="q-exp-section" aria-labelledby="q-exp-hint-h">'
+        '<h3 id="q-exp-hint-h" class="q-exp-h3">学習のヒント</h3>'
+        f'<p class="q-exp-hint">{text_to_html(hint)}</p></section>'
+    )
 
 
 def _ichimon_answer_is_true(page: dict) -> bool:
