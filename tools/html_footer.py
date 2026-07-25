@@ -42,6 +42,7 @@ SITE_COPYRIGHT = copyright_text()
 
 # 静的ページ・生成 HTML 共通（Search Console / クローラ向け）
 ROBOTS_INDEX_FOLLOW = '<meta name="robots" content="index, follow">'
+ROBOTS_NOINDEX_FOLLOW = '<meta name="robots" content="noindex, follow">'
 
 SITE_FOOTER_NAV = navigation_items("footer")
 

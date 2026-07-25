@@ -40,6 +40,7 @@ from tools.q_content_quality import is_demo_past_question_row
 from tools.q_similar_questions import build_similar_questions_html, load_question_catalog
 from tools.html_footer import (
     ROBOTS_INDEX_FOLLOW,
+    ROBOTS_NOINDEX_FOLLOW,
     breadcrumb_html,
     q_hub_links_html,
     q_index_filters_details_html,
@@ -56,6 +57,7 @@ from tools.html_footer import (
 )
 from tools.seo_editorial_chrome import seo_brand_asset_tags
 from tools.site_config import (
+    audit_mode,
     brand_name,
     clean_origin,
     exam_name,
@@ -731,6 +733,9 @@ def build_question_html(
 
     study_modes_note = study_modes_note_html()
 
+    # 審査モード中は公式過去問の個別ページを noindex にする（サイトマップからも自動除外）。
+    robots_meta = ROBOTS_NOINDEX_FOLLOW if audit_mode() else ROBOTS_INDEX_FOLLOW
+
     return f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -739,7 +744,7 @@ def build_question_html(
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
-{ROBOTS_INDEX_FOLLOW}
+{robots_meta}
 <link rel="canonical" href="{html.escape(canonical)}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{html.escape(title)}">
