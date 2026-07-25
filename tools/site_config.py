@@ -104,6 +104,15 @@ def excluded_past_exam_years() -> set[str]:
     return {str(x).strip() for x in raw if str(x).strip()}
 
 
+def audit_mode() -> bool:
+    """審査モード。true のあいだ、過去問（公式試験問題の転載）の個別ページを
+    noindex にして検索インデックスから外す（サイトマップからも自動で除外される）。
+    AdSense 等の審査中に「コンテンツの複製」とみなされるリスクを一時的に避ける用途。
+    承認後に site-config.json の auditMode を false に戻して再ビルド・再デプロイすれば
+    元どおりインデックスされる。実践演習・用語・記事・過去問一覧ハブには影響しない。"""
+    return bool(CONFIG.get("auditMode"))
+
+
 def contact_url() -> str:
     return str(CONFIG.get("contactUrl") or "#")
 

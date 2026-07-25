@@ -920,6 +920,9 @@ def build_article_html(
         "isPartOf": public_url("articles/index.html"),
         **json_ld_date_modified(updated),
     }
+    if updated:
+        # Article リッチリザルトは datePublished / dateModified の両方が推奨。
+        article_schema.setdefault("datePublished", updated)
     if author:
         article_schema["author"] = {"@type": "Person", "name": author}
     if reviewer:
